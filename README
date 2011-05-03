@@ -1,0 +1,12 @@
+We're developing a status dashboard for CDOT.
+It will display activity metrics for CDOT projects:
+* Processing.js
+* Popcorn
+* Butter
+* Fedora ARM
+* Other widgets we find useful
+
+repo:   https://github.com/jbuck/CDOT-Dashboard/
+wiki:   https://github.com/jbuck/CDOT-Dashboard/wiki
+issues: https://github.com/jbuck/CDOT-Dashboard/issues
+irc:    irc://chat.freenode.net/cdot-dashboard
