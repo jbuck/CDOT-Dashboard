@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <script src="dashBoard.js"></script>
+    <script src="clockWidget.js"></script>
+    
+    <script>
+
+      (function() {
+
+        dashBoard.widget( "text", function( id, options ){
+
+          document.getElementById( id ).innerHTML = options.text;
+        });
+
+        document.addEventListener( "DOMContentLoaded", function() {
+
+          dashBoard.clockWidget("clock", { cssClass: "testClass" });
+
+        }, false );
+      })();
+
+    </script>
+  </head>
+  <body>
+    <div>
+        <div id="clock"></div>
+    </div>
+  </body>
+</html>
