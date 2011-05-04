@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <script src="dashBoard.js"></script>
+    <script src="sequencer.js"></script>
+    <script>
+
+      (function() {
+
+        dashBoard.widget( "text", function( id, options ){
+
+          document.getElementById( id ).innerHTML = options.text;
+        });
+
+        document.addEventListener( "DOMContentLoaded", function() {
+
+          dashBoard.text( "first", {
+            text: "first"
+          })
+          .text( "second", {
+            text: "second"
+          })
+          .sequence( "sequence1", {
+            duration: 5 // seconds
+          });
+
+        }, false );
+      })();
+
+    </script>
+  </head>
+  <body>
+    <div>
+      <div id="sequence1">
+        <div id="first" class="sequence1"></div>
+        <div id="second" class="sequence1"></div>
+      </div>
+    </div>
+  </body>
+</html>
