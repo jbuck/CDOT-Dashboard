@@ -20,27 +20,24 @@
     };
   };
   
-  WidgetBase.prototype.update = function() {
-    
-    var data = this.dataInfo.callback();
-    setText(data);
-    
-  };
-  
   WidgetBase.prototype.display = function() {
     var elem = document.getElementById(this.target);
     elem.appendChild(this.widgetDiv);
   };
   
   WidgetBase.prototype.start = function() {
-    this.intvl = setInterval(this.update, this.dataInfo.interval);
+    var self = this;
+    this.intvl = setInterval( function() {
+      var data = self.dataInfo.callback();
+      self.setData(data);
+    } , this.dataInfo.interval);
   };
   
   WidgetBase.prototype.stop = function() {
     clearInterval(this.intvl);
   };
   
-  WidgetBase.prototype.setText = function(value) {
+  WidgetBase.prototype.setData = function(value) {
     if (value) {
       this.textData = value;
       this.widgetDiv.innerHTML = value;
