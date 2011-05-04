@@ -1,65 +1,17 @@
 <html>
   <head>
+    <script src="dashBoard.js"></script>
+    <script src="sequencer.js"></script>
     <script>
-      // create API
+
       (function() {
-        this.dashBoard = {};
-        var getElementsByClassName = function( node, classname ) {
-          // use native implementation if available
-          if (node.getElementsByClassName) {
-            return node.getElementsByClassName(classname);
-          } else {
-            return (function getElementsByClass(searchClass,node) {
-                if ( node === null ) {
-                  node = document;
-                }
-                var classElements = [],
-                    els = node.getElementsByTagName("*"),
-                    elsLen = els.length,
-                    pattern = new RegExp("(^|\\s)"+searchClass+"(\\s|$)"), i, j;
 
-                for (i = 0, j = 0; i < elsLen; i++) {
-                  if ( pattern.test(els[i].className) ) {
-                      classElements[j] = els[i];
-                      j++;
-                  }
-                }
+        dashBoard.widget( "text", function( id, options ){
 
-                return classElements;
-            })(classname, node);
-          }
-        }
-
-        dashBoard.widget = function( type, definition ){
-          dashBoard[ type ] = function( id, options ) {
-            definition.call( dashBoard, id, options );
-            return dashBoard;
-          };
-        };
+          document.getElementById( id ).innerHTML = options.text;
+        });
 
         document.addEventListener( "DOMContentLoaded", function() {
-          dashBoard.widget( "text", function( id, options ){
-            document.getElementById( id ).innerHTML = options.text;
-          });
-
-          dashBoard.widget( "sequence", function( id, options ){
-            var sequences = getElementsByClassName( document.getElementById( id ), id ),
-                index = 0,
-                showSequence = function() {
-                  sequences[ index++ ].style.display = "none";
-                  if ( !sequences[ index ] ) {
-                    index = 0;
-                  }
-                  sequences[ index ].style.display = "block";
-                  setTimeout( showSequence, options.duration * 1000 );
-                };
-
-            for ( var i = 1, sl = sequences.length; i < sl; i++ ) {
-              sequences[ i ].style.display = "none";
-            }
-
-            setTimeout( showSequence, options.duration * 1000 );
-          });
 
           dashBoard.text( "first", {
             text: "first"
