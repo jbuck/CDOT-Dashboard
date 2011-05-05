@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <style type="text/css">
+      .testClass td {
+        font-style: italic;
+        font-size: small;
+        vertical-align: top;
+      }
+      .testClass table {
+        border-collapse: collapse;
+        border-style: solid;
+      }
+    </style>
+    <script src="../dashBoard.js" type="text/javascript"></script>
+    <script src="fedoraBuildWidget.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+      (function() {
+
+        document.addEventListener( "DOMContentLoaded", function() {
+
+          dashBoard.fedoraBuildWidget("fbw", { cssClass: "testClass", border: "1", height: "400px", width: "320px" });
+
+        }, false );
+      })();
+
+    </script>
+  </head>
+  <body>
+    <div>
+        <div id="fbw"></div>
+    </div>
+  </body>
+</html>
