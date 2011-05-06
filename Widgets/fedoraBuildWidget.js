@@ -26,16 +26,24 @@
       
       $.jGFeed('http://arm.koji.fedoraproject.org/koji/recentbuilds', function (response) {
         
+        $.ajaxSetup({ cache: true });
+        
         if (!response) {
             return false;
         }
 
         for ( i = 0; i < response.entries.length; i++ ) {
           var title = response.entries[i].title;
+          var date = response.entries[i].publishedDate;
+          if ( date ) {
+            date = new Date(date);
+          } else {
+            date = new Date();
+          }
           var outcome = title.split( ":", 2 )[0];
           var build = title.split( ":", 2 );
           build = build[1].split( ",", 2 )[0];
-          buildStats.push( '<tr><td style="text-align: center; min-height: 30px; background: ' + states[outcome] + '">' + build + '</td></tr>');
+          buildStats.push( '<tr><td style="text-align: center; min-height: 30px; background: ' + states[outcome] + '">' + date + '</td><td style="text-align: center; min-height: 30px; background: ' + states[outcome] + '">' + build + '</td></tr>');
         }
 
         targetDiv.innerHTML = "";
