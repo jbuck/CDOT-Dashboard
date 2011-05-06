@@ -59,6 +59,6 @@
       },10);
     }
     getBuildStatus();
-    window.setInterval ( getBuildStatus, 120000 );
+    window.setInterval ( getBuildStatus, 18000000 );
   });
 } ());
