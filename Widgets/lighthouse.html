@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="default.css">
+    <script src="dashBoard.js"></script>
+    <script src="sequencer.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+		<script src="milestone.js"></script>
+		<script src="lighthouse.js"></script>	<script type="text/javascript">
+	
+	(function() {
+	google.load('visualization', '1', {'packages':['corechart']});
+      
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.setOnLoadCallback(function(){
+          dashBoard.lighthouseWidget("times", {
+						milestone: 6
+						})
+        });
+
+      })();
+	</script>
+  </head>
+  <body>
+    <div id="board">
+		<div id="times"></div>
+		<div id="times2"></div>
+		</div>
+  </body>
+</html>
