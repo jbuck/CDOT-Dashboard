@@ -5,47 +5,21 @@
       #githubContributors, #githubStatus {
         border: 1px solid black;
       }
+      .oneDayOfCommits {
+        border: 1px solid black;
+        padding: 25px 50px;
+        background-color:	#E8E8E8;
+      }
+      h2 {
+        border: 1px solid black;
+        background-color: #707070;
     </style>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-    <script type="text/javascript">
-      $( 
-        function() { 
-        
-        $.ajax({
-            type: "GET",
-            url: "http://github.com/api/v2/json/repos/show/jbuck/CDOT-Dashboard/contributors",
-            dataType: "json",
-            success: function(result) {
-              var contributors = result.contributors;
-              $('#githubContributors').append('<h1> ' + 'PROJECT NAME' + ' Contributors');
-              for (var arrayIdx = 0; arrayIdx < contributors.length; arrayIdx++) {
-                var contributor = contributors[arrayIdx];
-                $('#githubContributors').append('<p>' + contributor.name + '</p>');
-              }
-            }
-          });
-          
-          $.ajax({
-            type: "GET",
-            url: "http://github.com/api/v2/json/commits/list/jbuck/CDOT-Dashboard/master",
-            dataType: "json",
-            success: function(result) {
-              var commits = result.commits;
-              $('#githubStatus').append('<h1>Recent Commits</h1>').append('<p><b>' + commits.length + ' commits</b></p>');
-              
-              for(var arrayIdx = 0; arrayIdx < commits.length; arrayIdx++) {
-                var commit = commits[arrayIdx];
-                var committedDate = new Date(commit.committed_date).toDateString();
-                $('#githubStatus').append('<p><b>' + commit.author.name + '</b> committed "' + commit.message + '" on ' + committedDate + '</p>');
-              }
-            }
-          });
-        }
-      );
+    <script type="text/javascript" src="github.js">
     </script>
   </head>
   <body>
     <div id='githubContributors'></div>
-    <div id="githubStatus"></div>
+    <div id='githubStatus'></div>
   </body>
 </html>
