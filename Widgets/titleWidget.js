@@ -2,13 +2,13 @@
 // 
 
 (function() {
-    dashBoard.widget( "clockWidget" , function( id, options ){
+    dashBoard.widget( "titleWidget" , function( id, options ){
 
         //All of the following variables are expected as properties in the options that are passed in
         //var titleText=          "Our glorious dashboard";
         //var headerType =        "h1";
-    
-        var targetDiv = $(id);
+        console.log(options);
+        var targetDiv = document.getElementById ( id );
         if(targetDiv.className && options.cssClass) {
           targetDiv.className = targetDiv.className + " " + options.cssClass;
         }

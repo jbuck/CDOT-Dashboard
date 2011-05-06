@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"> </script>
-    <script src="dashBoard.js"></script>
+    <script src="../dashBoard.js"></script>
     <script src="twitterWidget.js"></script>
     
     <script>
@@ -13,8 +13,8 @@
         $(document).ready( function() {
 
           dashBoard.twitterWidget("twitter", { cssClass: "testClass",
-                                  tweetRefreshInterval: 5000,
-                                  tweetsPerPage: 50,
+                                  tweetRefreshInterval: 500000,
+                                  tweetsPerPage: 5,
                                   tweetPageNumber: 1,
                                   tweetShowUser: "true",
                                   tweetQuery: "@humphd"});

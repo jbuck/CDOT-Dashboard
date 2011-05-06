@@ -3,7 +3,7 @@
 
 (function() {
     dashBoard.widget( "twitterWidget" , function( id, options ){
-        var targetDiv = $(id);
+        var targetDiv = document.getElementById ( id );
         if(targetDiv.className && options.cssClass) {
           targetDiv.className = targetDiv.className + " " + options.cssClass;
         }
@@ -32,7 +32,8 @@
             
             // the actual json url -->
             var url="http://search.twitter.com/search.json?rpp="+options.tweetsPerPage+"&since_id="+options.lastUpdatePoint+"&show_user="+options.tweetShowUser+"&page="+options.tweetPageNumber+"&q=";
-            $.getJSON(url+options.tweetQuery,function(json){
+            url+=options.tweetQuery;
+            $.getJSON(url,function(json){
                 // by putting the max update id of the current set of tweets into the since_id parameter we avoid-->
                 // getting any duplicate tweets on future refreshes -->
                 lastUpdatePoint = json.max_id_str;
@@ -62,6 +63,7 @@
                 });
             });
         };
-        window.setInterval(updateTweets, options.tweetRefreshInterval);
+        updateTweets()
+        //window.setInterval(updateTweets, options.tweetRefreshInterval);
     });
 }());
