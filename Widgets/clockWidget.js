@@ -14,7 +14,7 @@
       var now = new Date();
       targetDiv.innerHTML = now.toLocaleTimeString();
     };
-
+    updateTime();
     window.setInterval ( updateTime, 1000 );
   });
 } ());
