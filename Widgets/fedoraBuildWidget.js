@@ -202,6 +202,8 @@
                                   // date"Wed, 04 May 2011 00:09:29 -0700"
           } else {*/
             date = Date.now();
+          } else {
+            date = new Date(date);
           }
           var s = title.split( ":", 2 );
           var outcome = s[0];
