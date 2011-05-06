@@ -99,7 +99,7 @@ ul {
   border-radius: 10px;
   margin: 5px;
   padding: 5px;
-  height: 300px;
+  height: 355px;
 }
 
 .project .title {
@@ -128,4 +128,52 @@ ul {
   font-size: 200%;
   font-weight: bold;
   text-align: center;
+}
+
+/* Fedora-ARM Styling */
+.fbwClass table td {
+        font-family: arial;
+        font-weight: bolder;
+        color: #330066;
+        font-size: 11pt;
+        vertical-align: center;
+        border-top: 1;
+}
+.fbwClass table {
+  -moz-border-radius: 60px;
+  border-radius: 60px;
+  webkit-border-radius: 60px;
+  border-style: solid;
+}
+.fbwClass table tr:last-child td:first-child 
+{
+  -moz-border-radius-bottomleft:50px;
+  -webkit-border-bottom-left-radius:50px;
+  border-bottom-left-radius:50px;
+  padding-left: 4px;
+}
+.fbwClass table tr:last-child td:last-child
+{
+  -moz-border-radius-bottomright:50px;
+  -webkit-border-bottom-right-radius:50px;
+  border-bottom-right-radius:50px;
+}
+.fbwClass table tr:first-child td:first-child 
+{
+  -moz-border-radius-topleft:50px;
+  -webkit-border-top-left-radius:50px;
+  border-top-left-radius:50px;
+}
+.fbwClass table tr:first-child td:last-child
+{
+  -moz-border-radius-topright:50px;
+  -webkit-border-top-right-radius:50px;
+  border-top-right-radius:50px;
+}
+
+.timeClass td {
+  color: #FFFFFF;
+}
+.dateClass td {
+  color: #FFFFFF;
 }
