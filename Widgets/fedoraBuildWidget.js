@@ -22,7 +22,7 @@
     var getBuildStatus = function() {
       
       var buildStats = [];
-      var states = { "complete": "green", "building": "yellow", "failed": "red", "cancelled": "orange"};
+      var states = { "complete": "#33CC33", "building": "#FFFF33", "failed": "#FF0033", "cancelled": "#FF3300"};
       
       $.jGFeed('http://arm.koji.fedoraproject.org/koji/recentbuilds', function (response) {
         
