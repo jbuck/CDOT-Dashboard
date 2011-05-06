@@ -3,12 +3,13 @@
 
 $( 
   function() { 
-  
+  var projectName = "CDOT-Dashboard";
+      
   Array.prototype.unique = function () {
-    var objects = {};
-    var length = this.length;
-    var result = [];
-    var arrayIdx;
+    var objects = {}, 
+        length = this.length,
+        result = [],
+        arrayIdx;
     
     for (arrayIdx = 0; arrayIdx < length; arrayIdx++) {
       objects[this[arrayIdx]] = this[arrayIdx];
@@ -20,14 +21,15 @@ $(
   };
   
   Array.prototype.arrayForKey = function(key, func) {
-    var result = [];
-    var length = this.length;
-    var arrayIdx;
+    var result = [],
+        length = this.length,
+        arrayIdx;
+        
     for (arrayIdx = 0; arrayIdx  < length; arrayIdx++) {
       result.push(this[arrayIdx][key]);
     }
     
-    if (typeof func == 'function') {
+    if (typeof func === 'function') {
       for (arrayIdx = 0; arrayIdx < result.length; arrayIdx++) {
         result[arrayIdx] = func(result[arrayIdx]);
       }
@@ -37,20 +39,22 @@ $(
   };
   
   var normalizeDate = function(inDate) {
-    var date = typeof inDate == 'Date' ? inDate : new Date(inDate);
+    var date = typeof inDate === 'Date' ? inDate : new Date(inDate);
     return new Date(date.getFullYear(), date.getMonth(), date.getDay(), 0, 0, 0, 0);
   }
   
   $.ajax({
       type: "GET",
-      url: "http://github.com/api/v2/json/repos/show/jbuck/CDOT-Dashboard/contributors",
+      url: "http://github.com/api/v2/json/repos/show/jbuck/" + projectName + "/contributors",
       dataType: "json",
       success: function(result) {
         var contributors = result.contributors;
-        $('#githubContributors').append('<h1> ' + 'PROJECT NAME' + ' Contributors');
+        $('#githubContributors').append('<h1> ' + projectName + ' Contributors');
         for (var arrayIdx = 0; arrayIdx < contributors.length; arrayIdx++) {
           var contributor = contributors[arrayIdx];
-          $('#githubContributors').append('<p>' + contributor.name + '</p>');
+          if (contributor.login !== "invalid-email-address") {
+            $('#githubContributors').append('<p>' + contributor.name + '</p>');
+          }
         }
       }
     });
