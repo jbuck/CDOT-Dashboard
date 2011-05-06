@@ -1,5 +1,6 @@
 <html>
   <head>
+    <link rel="stylesheet" href="default.css">
     <script src="dashBoard.js"></script>
     <script src="sequencer.js"></script>
     <script>
@@ -22,18 +23,23 @@
           .sequence( "sequence1", {
             duration: 5 // seconds
           });
-
+          
+          dashBoard.text("helloworld", {
+            text: "Hello world"
+          });
+          
         }, false );
       })();
 
     </script>
   </head>
   <body>
-    <div>
-      <div id="sequence1">
+    <div id="board">
+      <div id="sequence1" class="widget graygradient">
         <div id="first" class="sequence1"></div>
         <div id="second" class="sequence1"></div>
       </div>
+      <div id="helloworld" class= "widget bluegradient"></div>
     </div>
   </body>
 </html>
