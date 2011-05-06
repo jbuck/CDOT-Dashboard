@@ -11,7 +11,7 @@
     }
 
     var days = ["Sun", "Mon" , "Tue", "Wed","Thu","Fri","Sat" ];
-    var months = ["Jan", "Feb", "Mar", "May", "Apr", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
     var updateTime = function() {
       var now = new Date();
