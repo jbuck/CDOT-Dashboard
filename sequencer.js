@@ -35,11 +35,10 @@
   };
 
   dashBoard.widget( "sequence", function( id, options ){
-
-    var sequences = getElementsByClassName( document.getElementById( id ), id ),
+		
+    var sequences = document.getElementById( id ).getElementsByTagName('div'),
         index = 0,
         showSequence = function() {
-
           sequences[ index++ ].style.display = "none";
 
           if ( !sequences[ index ] ) {
