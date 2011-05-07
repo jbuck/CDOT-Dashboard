@@ -27,6 +27,12 @@
 
 		// Callback to be called once all JSON data has been loaded
 		function finished(){
+		
+		dashBoard.milestone( options.timeDiv, {
+            what: title[options.milestone-1],
+            when: dueOn[options.milestone-1],
+            gradient: "days"
+          });
 			
 			// Create new Google Visualization data table
 			var data = new google.visualization.DataTable();				
@@ -35,8 +41,8 @@
 			options.milestone = options.milestone || open.length-1;
 				
 			// Store the data for all the open and closed tickets
-			var raw_data = [['Open Tickets', open[options.milestone]],
-											['Closed Tickets', closed[options.milestone]]];
+			var raw_data = [['Open Tickets', open[options.milestone-1]],
+											['Closed Tickets', closed[options.milestone-1]]];
 				
 			data.addColumn('string', 'Ticket');
 			
@@ -52,22 +58,22 @@
 					data.setValue(j-1, i+1, raw_data[i][j]);    
 				}
 			}
-  
+ 
 			// Create and draw the visualization, as well as set all options
 			
 			new google.visualization.BarChart(document.getElementById(id)).
 			draw(data,{
-				width:200, height:75,
-				title: 					 "Milestone: " + title[options.milestone],
-				titleTextStyle:	 {color:"#FFFFFF"},
+				width:400, height:200,
+				title: 					 "Milestone: " + title[options.milestone-1],
+				titleTextStyle:	 {color:"#000000", fontSize:24},
 				isStacked: 			 true,
 				chartArea:			 {width:"100%"},
 				showValueLabels: false,
-				backgroundColor: "#000000",
-				gridlineColor:   "#000000",
-				hAxis:					 {baselineColor: "#000000", textStyle:{color:"#000000"}},
+				backgroundColor: "#FFFFFF",
+				gridlineColor:   "#FFFFFF",
+				hAxis:					 {baselineColor: "#FFFFFF", textStyle:{color:"#FFFFFF"}},
 				legend: 				 "none",
-				vAxis:					 {baselineColor: "#000000"},
+				vAxis:					 {baselineColor: "#FFFFFF"},
 				colors:					 ['red','green']
 			})
 		}
