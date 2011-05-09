@@ -39,10 +39,11 @@
             }
             else
             {
+                 //For some reason twitter only returns results-1 tweets in timeline mode.
                 jsonurl="http://twitter.com/statuses/user_timeline/" + options.query
-                +".json?count=" + options.results;
+                +".json?count=" + (options.results+1);
             }
-            $.getJSON(jsonurl+"&callback=?",function(json){
+            $.getJSON(jsonurl+"&callback=?",{},function(json){
                 newTweets = [];
                 if (options.mode == "search"){
                     $.each(json.results, function(i, t){
@@ -52,7 +53,7 @@
                         newTweets[i].user = t.from_user;
                     });
                 }else{
-                    $.each(json.results, function(i, t){
+                    $.each(json, function(i, t){
                         newTweets[i] = new Tweet();
                         newTweets[i].img = t.user.profile_image_url;
                         newTweets[i].text = t.text;
@@ -61,7 +62,7 @@
                 }
                 $(targetDiv).innerHTML = "";
                 var modeString = (options.mode == "search")?"Results for ":"Timeline of ";
-                $(targetDiv).append("<"+ options.headerType +">" + modeString + options.query + "</"+options.headerType+"></br>");
+                $(targetDiv).append("<"+ options.headerType +">" + modeString + options.query + "</"+options.headerType+">");
                 
                 $.each(newTweets, function(tweetIndex,currentTweet){
 
@@ -69,7 +70,7 @@
                         var userLink = "<a href='http://twitter.com/"+ currentTweet.user + "'>" + userImage + "</a>";
                         $(targetDiv).append(userLink + currentTweet.text + "<br/>");
                 });
-            });
+            },function(){});
         };
         updateTweets();
         //window.setInterval(updateTweets, options.tweetRefreshInterval);
