@@ -1,25 +1,56 @@
-<html> 
-  <head>
-    <title>Github Integration Test</title>
-    <style>
-      #githubContributors, #githubStatus {
-        border: 1px solid black;
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Github Integration Test</title>
+		<style type="text/css">
+			#githubContributors, #githubStatus {
+				border: 1px solid black;
+			}
+			.oneDayOfCommits {
+				border: 1px solid black;
+				padding: 25px 50px;
+				background-color:	#E8E8E8;
+			}
+			h2 {
+				border: 1px solid black;
+				background-color: #707070;
+			}
+			div.scroll {
+				height: 470px;
+				width: 470px;
+				overflow: auto;
+				border: 1px solid #666;
+				background-color: #ccc;
+				padding: 8px;
+			}
+		</style>
+		<script type="text/javascript" src="../dashBoard.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+		<script type="text/javascript" src="github.js"></script>
+		<script type="text/javascript" src="../sequencer.js"></script>
+		<script type="text/javascript">
+      $( function() {
+        dashBoard.githubWidget("githubStatus", {
+          userId: "jbuck",
+          projectName: "CDOT-Dashboard",
+          branchName: "master",
+          callback: function() {
+            dashBoard.sequence( "githubStatus", {
+              duration: 5
+            });
+          }
+        });
+
       }
-      .oneDayOfCommits {
-        border: 1px solid black;
-        padding: 25px 50px;
-        background-color:	#E8E8E8;
-      }
-      h2 {
-        border: 1px solid black;
-        background-color: #707070;
-    </style>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-    <script type="text/javascript" src="github.js">
-    </script>
-  </head>
-  <body>
-    <div id='githubContributors'></div>
-    <div id='githubStatus'></div>
-  </body>
+      );
+		</script>
+	</head>
+	<body>
+		<div id='githubContributors'>
+		</div>
+		<div id='githubStatus'>
+		</div>
+	</body>
 </html>
