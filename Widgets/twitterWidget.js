@@ -60,7 +60,7 @@
                         newTweets[i].user = options.query;
                     });
                 }
-                $(targetDiv).innerHTML = "";
+                while (targetDiv.hasChildNodes()) targetDiv.removeChild(targetDiv.firstChild);
                 var modeString = (options.mode == "search")?"Results for ":"Timeline of ";
                 $(targetDiv).append("<"+ options.headerType +">" + modeString + options.query + "</"+options.headerType+">");
                 
@@ -73,6 +73,10 @@
             },function(){});
         };
         updateTweets();
-        //window.setInterval(updateTweets, options.tweetRefreshInterval);
+        if (options.refreshInterval < 50000)
+        {
+            options.refreshInterval = 50000;
+        }
+        window.setInterval(updateTweets, options.refreshInterval);
     });
 }());
