@@ -17,12 +17,12 @@ if ( $service == "lighthouse" ) {
   exec( "sqlite3 dashboard 'select timestamp from " . $service . ";'", $timestamp );
   $timestamp = implode( '\n', $timestamp );
 
-  if ( ( time() - $timestamp ) > 1800000 ) {
+  if ( ( time() - $timestamp ) > 1800 ) {
 
     $contents = str_replace( "\"", "\\\"",
       str_replace( "'", "''",
         file_get_contents(
-          "https://webmademovies.lighthouseapp.com/projects/63272-popcornjs/milestones.json?_token=95f4819c1d3e6a90e80ba7a57eeae88f5e730b5a"
+          "https://webmademovies.lighthouseapp.com/projects/63272-popcornjs/milestones.json?_token=5daf50297d277033bcd304f5f526ed64570f5487"
         )
       )
     );
