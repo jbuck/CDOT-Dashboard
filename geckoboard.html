@@ -5,7 +5,56 @@
     
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/widget.css">
-    
+    <link rel="stylesheet" href="staticdemo.css">
+    <script src="dashBoard.js"></script>
+    <script src="Widgets/chart.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script> 
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="Widgets/lighthouse.js"></script>
+    <script src="milestone.js"></script>
+    <script src="sequencer.js"></script>
+    <script>
+	(function() {
+
+
+	var ready = false;
+
+	// Doing Google stuff here because it wasn't working properly inside the lighthouse script
+	google.load('visualization', '1', {'packages':['corechart']});
+      
+	// Set a callback to run when the Google Visualization API is loaded.
+	google.setOnLoadCallback(function(){ ready = true; });
+
+	document.addEventListener( "DOMContentLoaded", function(){ check(); }, false );
+
+	var check = function(){
+	if(ready){
+
+          dashBoard.lighthouseWidget( "lighthouse-popcorn", {
+	    project: "Popcorn",
+            milestone: 7,
+	    time: true
+          })
+	  .lighthouseWidget( "lighthouse-processing", {
+	    project: "Processing",
+            milestone: 22,
+	    time: true
+          })
+	  .chart( "chart-processing", {
+	    project: "Processing",
+	    milestone: 22
+          })
+	  .chart( "chart-popcorn", {
+	    project: "Popcorn",
+	    milestone: 7
+          });
+	}
+	else{
+	setTimeout( check, 10 );
+	}
+	}
+      })();
+    </script>
     
   </head>
   <body>
@@ -50,20 +99,15 @@
       <div class="widget widget-size-1x1" style="top: 810px; left: 0px;">
         <div class="logo-box" style="background: url('assets/processingjs.png') no-repeat 50% 50%"></div>
       </div>
-      <div class="widget widget-size-1x1" style="top: 810px; left: 240px;">
-        Processing.js tickets open/closed on latest milestone
+      <div id="lighthouse-processing"class="widget widget-size-1x1" style="top: 810px; left: 240px;">
       </div>
-      <div class="widget widget-size-1x1" style="top: 810px; left: 480px;">
-        Graph of Processing.js open/closed tickets
+      <div id="chart-processing" class="widget widget-size-1x1" style="top: 810px; left: 480px;">
       </div>
-      <div class="widget widget-size-1x1" style="top: 810px; left: 720px;">
-        Popcorn.js tickets open/closed on latest milestone
+      <div id="lighthouse-popcorn" class="widget widget-size-1x1" style="top: 810px; left: 720px;">
       </div>
-      <div class="widget widget-size-1x1" style="top: 810px; left: 960px;">
-        Graph of Popcorn.js open/closed tickets
+      <div id="chart-popcorn" class="widget widget-size-1x1" style="top: 810px; left: 960px;">
       </div>
       <div class="widget widget-size-1x1" style="top: 810px; left: 1200px;">
-        Graph of failed/complete/in-progress/cancelled Fedora ARM builds
       </div>
       <div class="widget widget-size-1x1" style="top: 810px; left: 1440px;">
         <div class="logo-box" style="background: url('assets/popcornjs.png') no-repeat 50% 50%"></div>

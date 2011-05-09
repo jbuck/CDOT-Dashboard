@@ -5,11 +5,14 @@
 
 	var refresh = function(){
 
-		var open, closed, title, dueOn;
+		var open, closed, title, dueOn, url;
+		
+		options.project == "Processing" ? url = "http://scotland.proximity.on.ca/sdowne/sqlite/jsonp.php?callback=?&service=lighthouse-processing" :
+						  url = "http://scotland.proximity.on.ca/sdowne/sqlite/jsonp.php?callback=?&service=lighthouse-popcorn";
 
 		// JQuery used to get the JSON data from our server, values stored in arrays named accordingly
 		$.getJSON(
-			"http://scotland.proximity.on.ca/sdowne/sqlite/jsonp.php?callback=?&service=lighthouse-popcorn",
+			url,
 			function(json) {
 			
 				open = new Array(json.milestones.length);
@@ -30,7 +33,7 @@
 		// Callback to be called once all JSON data has been loaded
 		function finished(){
 		
-		var newdiv, newdivz, width, words, words2, oText, oText2, names = "div" + options.milestone, namez = "divz" + options.milestone;
+		var newdiv, newdivz, newdiv_, width, words, wordz, words2, oText, oText2, names = "div" + options.milestone, namez = "divz" + options.milestone;
 		if(!document.getElementById(names)){
 			newdiv = document.createElement('div');
 			newdivz = document.createElement('div');
@@ -50,12 +53,18 @@
 			width = 100 - (width*100) + "%";
 		}
 		
+		wordz = document.createElement("p");
+		wordz.style.fontSize = "25px";
+		wordz.innerHTML = "<p>" + options.project + " " + title[options.milestone-1] + "</p>";
+		
 		words = document.createElement("p");
 		words2 = document.createElement("p");
       		words.innerHTML = "<strong><b>" + open[options.milestone-1] + "</b></strong> open tickets";
 		words2.innerHTML = "<b><strong>" + closed[options.milestone-1] +  "</strong></b> closed tickets";
+		document.getElementById(id).appendChild(wordz);
 		document.getElementById(id).appendChild(words);
 		document.getElementById(id).appendChild(words2);
+
 
 		newdivz.width = "200px";
 		newdivz.height = "50px";
@@ -73,9 +82,10 @@
 		newdivz.appendChild(newdiv);
 
 		newdiv_ = document.createElement("div");
-		newdiv_.id = "times" + options.milestone-1;
-		document.getElementById(id).appendChild(newdiv_);
-				
+		newdiv_.id = "times" + options.milestone;
+		newdiv_.style.fontSize = "15px";	
+		newdiv_.style.marginTop = "10px";	
+		
 
 		if(options.time){
 			dashBoard.milestone( newdiv_.id, {
@@ -84,6 +94,8 @@
             		gradient: "days"
           	});
 		}
+
+		document.getElementById(id).appendChild(newdiv_);
 				
 		setTimeout( refresh, 30000 );
 }
