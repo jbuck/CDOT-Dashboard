@@ -3,10 +3,13 @@
   <head>
     <title>What's happening @ CDOT</title>
     
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/widget.css">
-      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script> 
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/widget.css">
+    <link rel="stylesheet" type="text/css" href="css/fedoraBuildCSS.css">
+    <link rel="stylesheet" type="text/css" href="css/CDOTFeed.css" ></link>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
 		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="http://www.google.com/uds/solutions/dynamicfeed/gfdynamicfeedcontrol.js" type="text/javascript"></script>   
     <script src="dashBoard.js" type="text/javascript"></script>
 		<script src="milestone.js" type="text/javascript"></script>
 		<script src="sequencer.js" type="text/javascript"></script>
@@ -15,14 +18,16 @@
     <script src="Widgets/fedoraBuildWidget.js" type="text/javascript"></script>
     <script src="Widgets/dateWidget.js" type="text/javascript"></script>
     <script src="Widgets/twitterWidget.js" type="text/javascript"></script>
+    <script src="Widgets/fedoraBuildWidget.js" type="text/javascript"></script>
+    <script src="Widgets/blogReaderWidget.js" type="text/javascript"></script>
     <script type="text/javascript">
     (function() {
 					var ready = false;
 					
 					// Doing Google stuff here because it wasn't working properly inside the lighthouse script
 					google.load('visualization', '1', {'packages':['corechart']});
-      
-					// Set a callback to run when the Google Visualization API is loaded.
+          google.load( "feeds", "1");
+
 					google.setOnLoadCallback(function(){ ready = true; });
 					
 					document.addEventListener( "DOMContentLoaded", function(){ check(); }, false );
@@ -37,12 +42,29 @@
 									showUser: "true",
 									query: "#popcornjs OR #processingjs",
 									headerType: "h2"
-							})
+							}).blogReaderWidget({
+                  target: "blogFeed",
+                  url: "http://zenit.senecac.on.ca/~chris.tyler/planet/atom.xml",
+                  title: "Planet CDOT",
+                  orientation: "Vertical"
+              });
 						}
 						else{
 							setTimeout( check, 10 );
 						}
 					}
+
+          document.addEventListener( "DOMContentLoaded", function() {
+
+          dashBoard.fedoraBuildWidget("fedoraBuild", { 
+            cssClass    : "testClass", 
+            border      : "0", 
+            height      : "430px", 
+            width       : "470px",
+            cellSpacing : "-1"
+          });
+
+        }, false );
       })();
     </script>
   </head>
@@ -73,6 +95,7 @@
       <!-- Middle Row -->
       <div class="widget widget-size-1x2" style="top: 330px; left: 0px;">
         Planet CDOT RSS Feed
+        <div id="blogFeed" style="width: 100%; height: 430px"></div>
       </div>
       <div class="widget widget-size-2x2" style="top: 330px; left: 240px;">
         Processing.js
@@ -80,8 +103,9 @@
       <div class="widget widget-size-2x2" style="top: 330px; left: 720px;">
         Popcorn.js
       </div>
-      <div class="widget widget-size-2x2" style="top: 330px; left: 1200px;">
+      <div class="widget widget-size-2x2" style="top: 330px; left: 1200px; text-align: center;">
         Fedora ARM Build
+      <div id="fedoraBuild"></div>
       </div>
       
       <!-- Bottom Row -->
