@@ -34,13 +34,13 @@
             {
                 jsonurl="http://search.twitter.com/search.json?rpp="+options.results
                 //+"&show_user="+options.showUser
-                +"&q="+options.query;
+                +"&q="+escape(options.query);
                 
             }
             else
             {
                  //For some reason twitter only returns results-1 tweets in timeline mode.
-                jsonurl="http://twitter.com/statuses/user_timeline/" + options.query
+                jsonurl="http://twitter.com/statuses/user_timeline/" + escape(options.query)
                 +".json?count=" + (options.results+1);
             }
             $.getJSON(jsonurl+"&callback=?",{},function(json){
