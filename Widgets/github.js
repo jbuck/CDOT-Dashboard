@@ -19,6 +19,7 @@
       }
       return result;
     };
+    
     Array.prototype.arrayForKey = function(key, func) {
       var result = [],
       length = this.length,
@@ -73,9 +74,10 @@
           //targetDiv.addClass('oneDayOfCommits');
           $('#' + id).append(targetDiv);
           targetDiv.append('<h2>' + uniqueDates[arrayIdx].toDateString() + '</h2>');
-          targetDiv.append('<ul id ="navlist"></ul>');
+          targetDiv.addClass('navcontainer');
+          targetDiv.append('<ul class="navlist"></ul>');
           targetDiv.addClass(id);
-          targetDiv.addClass("scroll");
+          targetDiv.addClass('scroll');
         }
 
         // call the callback function if it is specified

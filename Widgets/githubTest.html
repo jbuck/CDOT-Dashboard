@@ -5,9 +5,6 @@
 	<head>
 		<title>Github Integration Test</title>
 		<style type="text/css">
-			#githubContributors, #githubStatus {
-				border: 1px solid black;
-			}
 			.oneDayOfCommits {
 				border: 1px solid black;
 				padding: 25px 50px;
@@ -20,10 +17,45 @@
 			div.scroll {
 				height: 470px;
 				width: 470px;
-				overflow: auto;
+				overflow: hidden;
 				border: 1px solid #666;
-				background-color: #ccc;
+				background: #232526;
 				padding: 8px;
+			}
+			.navcontainer {
+				background: #f0e7d7;
+				width: 30%;
+				padding: 1em 0;
+				font-family: Helvetica, georgia, serif;
+				font-size: 15px;
+				text-align: center;
+			}
+			ul.navlist {
+				text-align: left;
+				list-style: none;
+				padding: 0;
+				margin: 0 auto;
+				width: 90%;
+			}
+			ul.navlist li {
+				display: block;
+				margin: 0;
+				padding: 0;
+				display: block;
+				width: 100%;
+				padding: 0.5em 0 0.5em 0.5em;
+				border-width: 1px;
+				border-color: #ffe #aaab9c #ccc #fff;
+				border-style: solid;
+				color: #FFFFFF;
+				text-decoration: none;
+				background: #707070;
+				width: auto;
+			}
+			ul.navlist li a:hover, ul.navlist li#active a:hover {
+				color: #800000;
+				background: transparent;
+				border-color: #aaab9c #fff #fff #ccc;
 			}
 		</style>
 		<script type="text/javascript" src="../dashBoard.js"></script>
@@ -39,12 +71,11 @@
           callback: function() {
             dashBoard.sequence( "githubStatus", {
               duration: 5
+              // have a callback in sequencer to pass in our own animations
             });
           }
         });
-
-      }
-      );
+      });
 		</script>
 	</head>
 	<body>
