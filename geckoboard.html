@@ -1,73 +1,105 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>What's happening @ CDOT</title>
-    
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/widget.css">
-    
-    
-  </head>
-  <body>
-    <div id="container">
-      <!-- Top Row -->
-      <div class="widget widget-size-1x1" style="top: 0px; left: 0px;">
-        <div class="logo-box" style="background: url('assets/cdot.png') no-repeat 50% 50%"></div>
-      </div>
-      <div class="widget widget-size-1x1" style="top: 0px; left: 240px;">
-        Mountain View Time
-      </div>
-      <div class="widget widget-size-3x1" style="top: 0px; left: 480px;">
-        Title
-      </div>
-      <div class="widget widget-size-1x1" style="top: 0px; left: 1200px;">
-        Toronto Time
-      </div>
-      <div class="widget widget-size-1x1" style="top: 0px; left: 1440px;">
-        <div class="logo-box" style="background: url('assets/fedora.png') no-repeat 50% 50%"></div>
-      </div>
-      
-      <!-- Twitter Row -->
-      <div class="widget widget-size-max-x" style="top: 240px; left: 0px;">
-        Twitter
-      </div>
-      
-      <!-- Middle Row -->
-      <div class="widget widget-size-1x2" style="top: 330px; left: 0px;">
-        Planet CDOT RSS Feed
-      </div>
-      <div class="widget widget-size-2x2" style="top: 330px; left: 240px;">
-        Processing.js
-      </div>
-      <div class="widget widget-size-2x2" style="top: 330px; left: 720px;">
-        Popcorn.js
-      </div>
-      <div class="widget widget-size-2x2" style="top: 330px; left: 1200px;">
-        Fedora ARM Build
-      </div>
-      
-      <!-- Bottom Row -->
-      <div class="widget widget-size-1x1" style="top: 810px; left: 0px;">
-        <div class="logo-box" style="background: url('assets/processingjs.png') no-repeat 50% 50%"></div>
-      </div>
-      <div class="widget widget-size-1x1" style="top: 810px; left: 240px;">
-        Processing.js tickets open/closed on latest milestone
-      </div>
-      <div class="widget widget-size-1x1" style="top: 810px; left: 480px;">
-        Graph of Processing.js open/closed tickets
-      </div>
-      <div class="widget widget-size-1x1" style="top: 810px; left: 720px;">
-        Popcorn.js tickets open/closed on latest milestone
-      </div>
-      <div class="widget widget-size-1x1" style="top: 810px; left: 960px;">
-        Graph of Popcorn.js open/closed tickets
-      </div>
-      <div class="widget widget-size-1x1" style="top: 810px; left: 1200px;">
-        Graph of failed/complete/in-progress/cancelled Fedora ARM builds
-      </div>
-      <div class="widget widget-size-1x1" style="top: 810px; left: 1440px;">
-        <div class="logo-box" style="background: url('assets/popcornjs.png') no-repeat 50% 50%"></div>
-      </div>
-    </div>
-  </body>
+	<head>
+		<title>What's happening @ CDOT</title>
+		<link rel="stylesheet" type="text/css" href="Widgets/githubWidgetStyles.css">
+		<script type="text/javascript" src="dashBoard.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+		<script type="text/javascript" src="Widgets/github.js"></script>
+		<script type="text/javascript" src="sequencer.js"></script>
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/widget.css">
+
+		<script type="text/javascript">
+      // TODO: set refresh time
+      $( function() {
+        dashBoard.githubWidget("processingGithubCommits", {
+	        userId: "annasob",
+	        projectName: "processing-js",
+	        branchName: "master",
+	        callback: function() {
+	        dashBoard.sequence( "processingGithubCommits", {
+	        duration: 5
+	        // have a callback in sequencer to pass in our own animations
+	        });
+	        }
+        });
+        dashBoard.githubWidget("popcornGithubCommits", {
+          userId: "annasob",
+          projectName: "popcorn-js",
+          branchName: "master",
+          callback: function() {
+            dashBoard.sequence( "popcornGithubCommits", {
+              duration: 5
+              // have a callback in sequencer to pass in our own animations
+            });
+          }
+        });
+      });
+		</script>
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<!-- Top Row -->
+			<div class="widget widget-size-1x1" style="top: 0px; left: 0px;">
+				<div class="logo-box" style="background: url('assets/cdot.png') no-repeat 50% 50%">
+				</div>
+			</div>
+			<div class="widget widget-size-1x1" style="top: 0px; left: 240px;">
+				Mountain View Time
+			</div>
+			<div class="widget widget-size-3x1" style="top: 0px; left: 480px;">
+				Title
+			</div>
+			<div class="widget widget-size-1x1" style="top: 0px; left: 1200px;">
+				Toronto Time
+			</div>
+			<div class="widget widget-size-1x1" style="top: 0px; left: 1440px;">
+				<div class="logo-box" style="background: url('assets/fedora.png') no-repeat 50% 50%">
+				</div>
+			</div>
+			<!-- Twitter Row -->
+			<div class="widget widget-size-max-x" style="top: 240px; left: 0px;">
+				Twitter
+			</div>
+			<!-- Middle Row -->
+			<div class="widget widget-size-1x2" style="top: 330px; left: 0px;">
+				Planet CDOT RSS Feed
+			</div>
+			<div id="processingGithubCommits" class="widget widget-size-2x2" style="top: 330px; left: 240px">
+				Processing.js
+			</div>
+			<div id="popcornGithubCommits" class="widget widget-size-2x2" style="top: 330px; left: 720px;">
+				Popcorn.js
+			</div>
+			<div class="widget widget-size-2x2" style="top: 330px; left: 1200px;">
+				Fedora ARM Build
+			</div>
+			<!-- Bottom Row -->
+			<div class="widget widget-size-1x1" style="top: 810px; left: 0px;">
+				<div class="logo-box" style="background: url('assets/processingjs.png') no-repeat 50% 50%">
+				</div>
+			</div>
+			<div class="widget widget-size-1x1" style="top: 810px; left: 240px;">
+				Processing.js tickets open/closed on latest milestone
+			</div>
+			<div class="widget widget-size-1x1" style="top: 810px; left: 480px;">
+				Graph of Processing.js open/closed tickets
+			</div>
+			<div class="widget widget-size-1x1" style="top: 810px; left: 720px;">
+				Popcorn.js tickets open/closed on latest milestone
+			</div>
+			<div class="widget widget-size-1x1" style="top: 810px; left: 960px;">
+				Graph of Popcorn.js open/closed tickets
+			</div>
+			<div class="widget widget-size-1x1" style="top: 810px; left: 1200px;">
+				Graph of failed/complete/in-progress/cancelled Fedora ARM builds
+			</div>
+			<div class="widget widget-size-1x1" style="top: 810px; left: 1440px;">
+				<div class="logo-box" style="background: url('assets/popcornjs.png') no-repeat 50% 50%">
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
