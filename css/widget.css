@@ -104,6 +104,10 @@ body {
   font-size: 450%;
 }
 
+.t-size-x80 {
+  font-size: 725%;
+}
+
 .t-muted {
   color: #707275;
 }
