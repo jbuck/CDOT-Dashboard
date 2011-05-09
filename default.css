@@ -6,10 +6,10 @@
 */
 
 html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+h1, h2, h3, h4, h5, h6, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
+small, strike, sub, sup, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
@@ -93,5 +93,11 @@ div.bluegradient {
   background-image:         linear-gradient(top, #4c5660, #091b31); /* Standard */
             filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#4c5660', EndColorStr='#091b31'); /* IE6–IE9 */
 }
+
+p
+{
+    color:red;
+}
+
 
 /* Module-specific CSS */
