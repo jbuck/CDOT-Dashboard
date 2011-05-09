@@ -9,10 +9,11 @@
         }
             
         var Tweet = function () {
-            this.img = null;
-            this.user = null;
-            this.text = null;
-        }
+              this.img = null;
+              this.user = null;
+              this.text = null;
+            },
+            tweetIndex = 0;
         
         //Contains the id of the most recent tweet that twitter grabbed for us. This is put into the since_id
         //parameter to cause future update requests to only return new tweets for us
@@ -44,7 +45,7 @@
                 +".json?count=" + (options.results+1);
             }
             $.getJSON(jsonurl+"&callback=?",{},function(json){
-                newTweets = [];
+                var newTweets = [];
                 if (options.mode == "search"){
                     $.each(json.results, function(i, t){
                         newTweets[i] = new Tweet();
@@ -62,15 +63,23 @@
                 }
                 while (targetDiv.hasChildNodes()) targetDiv.removeChild(targetDiv.firstChild);
                 var modeString = (options.mode == "search")?"Results for ":"Timeline of ";
-                $(targetDiv).append("<"+ options.headerType +">" + modeString + options.query + "</"+options.headerType+">");
+                options.headerType && $(targetDiv).append("<"+ options.headerType +">" + modeString + options.query + "</"+options.headerType+">");
                 
-                $.each(newTweets, function(tweetIndex,currentTweet){
+                var displayTweet = function() {
+                  var userImage = "<img src='" + newTweets[ tweetIndex ].img +"'/>";
+                  var userLink = "<a href='http://twitter.com/"+ newTweets[ tweetIndex ].user + "'>" + userImage + "</a>";
+                  options.image && $(targetDiv).append(userLink);
+                  targetDiv.innerHTML = newTweets[ tweetIndex ].text;
 
-                        var userImage = "<img src='" + currentTweet.img +"'/>";
-                        var userLink = "<a href='http://twitter.com/"+ currentTweet.user + "'>" + userImage + "</a>";
-                        $(targetDiv).append(userLink + currentTweet.text + "<br/>");
-                });
-            },function(){});
+                  if ( !newTweets[ ++tweetIndex ] ) {
+                    tweetIndex = 0;
+                  }
+
+                };
+                displayTweet();
+                
+                setInterval( displayTweet, options.displayInterval );
+            });
         };
         updateTweets();
         if (options.refreshInterval < 50000)

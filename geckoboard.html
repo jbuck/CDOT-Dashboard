@@ -38,13 +38,12 @@
 					var check = function(){
 						if(ready){
 							dashBoard.twitterWidget("twitterpopproc", {
-									cssClass: "twitter",
 									refreshInterval: 500000,
-									results: 5,
+                  displayInterval: 8000,
+									results: 25,
 									mode: "search",
-									showUser: "true",
 									query: "#popcornjs OR #processingjs",
-									headerType: "h2"
+									image: false
 							}).blogReaderWidget({
                   target: "blogFeed",
                   url: "http://zenit.senecac.on.ca/~chris.tyler/planet/atom.xml",
@@ -184,7 +183,7 @@
       </div>
       
       <!-- Twitter Row -->
-      <div id = "twitterpopproc" class="widget widget-size-max-x" style="top: 240px; left: 0px;">
+      <div id = "twitterpopproc" class="widget widget-size-max-x twitter" style="top: 240px; left: 0px;">
         Twitter
       </div>
       
