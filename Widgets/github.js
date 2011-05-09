@@ -67,7 +67,7 @@
         uniqueDates = commits.arrayForKey('committed_date', normalizeDate).unique(),
         arrayIdx;
 
-        $('#' + id).append('<h1>Recent Commits</h1>').append('<p><b>' + commits.length + ' commits</b></p>');
+        //$('#' + id).append('<h1>Recent Commits</h1>').append('<p><b>' + commits.length + ' commits</b></p>');
 
         for(arrayIdx = 0; arrayIdx < uniqueDates.length; arrayIdx += 1) {
           var targetDiv = $('<div id="' + uniqueDates[arrayIdx].getTime() + '">');
