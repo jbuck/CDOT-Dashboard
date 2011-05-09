@@ -13,11 +13,19 @@
         $(document).ready( function() {
 
           dashBoard.twitterWidget("twitter", { cssClass: "testClass",
-                                  tweetRefreshInterval: 500000,
-                                  tweetsPerPage: 5,
-                                  tweetPageNumber: 1,
-                                  tweetShowUser: "true",
-                                  tweetQuery: "@humphd"});
+                                  refreshInterval: 50000,
+                                  results: 5,
+                                  showUser: "true",
+                                  headerType: "h2",
+                                  mode: "search",
+                                  query: "@humphd"});
+          dashBoard.twitterWidget("twitter2", { cssClass: "testClass",
+                                  refreshInterval: 50000,
+                                  results: 5,
+                                  showUser: "true",
+                                  headerType: "h2",
+                                  mode: "userTimeline",
+                                  query: "humphd"});
 
         });
       })();
@@ -27,6 +35,7 @@
   <body>
     <div>
         <div id="twitter"></div>
+        <div id="twitter2"></div>
     </div>
   </body>
 </html>

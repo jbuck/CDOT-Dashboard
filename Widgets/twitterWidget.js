@@ -13,8 +13,6 @@
             this.user = null;
             this.text = null;
         }
-        var tweets = [];
-        var newTweets = [];
         
         //Contains the id of the most recent tweet that twitter grabbed for us. This is put into the since_id
         //parameter to cause future update requests to only return new tweets for us
@@ -23,47 +21,57 @@
         var updateTweets = function() {
             //All of the following variables are expected as properties in the options that are passed in
             //ms between calls to refresh the feed -->
-            //var tweetRefreshInterval=   5000;
-            //var tweetsPerPage=          50;
-            //var tweetPageNumber=        1;
-            //var tweetShowUser=          "true";
+            //var refreshInterval=   5000;
+            //var results=          50;
+            //var showUser=          "true";
             //the tweet string to search for on twitter -->
-            //var tweetQuery=             "@humphd";
+            //var query=             "@humphd";
+            //var headerType=       "h2";
+            //var mode= "search" or "timeline";
             
-            // the actual json url -->
-            var url="http://search.twitter.com/search.json?rpp="+options.tweetsPerPage+"&since_id="+options.lastUpdatePoint+"&show_user="+options.tweetShowUser+"&page="+options.tweetPageNumber+"&q=";
-            url+=options.tweetQuery;
-            $.getJSON(url,function(json){
-                // by putting the max update id of the current set of tweets into the since_id parameter we avoid-->
-                // getting any duplicate tweets on future refreshes -->
-                lastUpdatePoint = json.max_id_str;
+            var jsonurl;
+            if (options.mode == "search")
+            {
+                jsonurl="http://search.twitter.com/search.json?rpp="+options.results
+                //+"&show_user="+options.showUser
+                +"&q="+options.query;
+                
+            }
+            else
+            {
+                jsonurl="http://twitter.com/statuses/user_timeline/" + options.query
+                +".json?count=" + options.results;
+            }
+            $.getJSON(jsonurl+"&callback=?",function(json){
                 newTweets = [];
-                $.each(json.results, function(i, t){
-                    newTweets[i] = new Tweet();     
-                    newTweets[i].img = t.profile_image_url;
-                    newTweets[i].text = t.text;
-                    newTweets[i].user = t.from_user;
-                    tweets.push(newTweets[i]);
-                });
-                // Get rid of tweets that won't be shown -->
-                for (var currentIndex = options.tweetsPerPage; currentIndex < tweets.length; currentIndex++)
-                {
-                    tweets.pop();
+                if (options.mode == "search"){
+                    $.each(json.results, function(i, t){
+                        newTweets[i] = new Tweet();
+                        newTweets[i].img = t.profile_image_url;
+                        newTweets[i].text = t.text;
+                        newTweets[i].user = t.from_user;
+                    });
+                }else{
+                    $.each(json.results, function(i, t){
+                        newTweets[i] = new Tweet();
+                        newTweets[i].img = t.user.profile_image_url;
+                        newTweets[i].text = t.text;
+                        newTweets[i].user = options.query;
+                    });
                 }
                 $(targetDiv).innerHTML = "";
-                $(targetDiv).append("<h2>Showing tweets related to " + options.tweetQuery + "</h2></br>");
+                var modeString = (options.mode == "search")?"Results for ":"Timeline of ";
+                $(targetDiv).append("<"+ options.headerType +">" + modeString + options.query + "</"+options.headerType+"></br>");
                 
-                $.each(tweets, function(tweetIndex,currentTweet){
-                    if (tweetIndex < options.tweetsPerPage)
-                    {
+                $.each(newTweets, function(tweetIndex,currentTweet){
+
                         var userImage = "<img src='" + currentTweet.img +"'/>";
                         var userLink = "<a href='http://twitter.com/"+ currentTweet.user + "'>" + userImage + "</a>";
                         $(targetDiv).append(userLink + currentTweet.text + "<br/>");
-                    }
                 });
             });
         };
-        updateTweets()
+        updateTweets();
         //window.setInterval(updateTweets, options.tweetRefreshInterval);
     });
 }());
