@@ -3,6 +3,8 @@
 
 	dashBoard.widget( "lighthouseWidget" , function( id, options ){
 
+	var refresh = function(){
+
 		var open, closed, title, dueOn;
 
 		// JQuery used to get the JSON data from our server, values stored in arrays named accordingly
@@ -77,5 +79,9 @@
 				colors:					 ['red','green']
 			})
 		}
+
+		setTimeout( refresh, 30000 );
+	};
+	refresh();
 	});
 } ());
