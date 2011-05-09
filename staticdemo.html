@@ -37,39 +37,9 @@
 									cssClass: "dateClass"
 							});
 							
-							dashBoard.lighthouseWidget("milestone1", {
-								milestone: 1,
-								timeDiv: "ms1"
-							})
-							.lighthouseWidget("milestone2", {
-								milestone: 2,
-								timeDiv: "ms2"
-							})
-							.lighthouseWidget("milestone3", {
-								milestone: 3,
-								timeDiv: "ms3"
-							})
-							.lighthouseWidget("milestone4", {
-								milestone: 4,
-								timeDiv: "ms4"
-							})
-							.lighthouseWidget("milestone5", {
-								milestone: 5,
-								timeDiv: "ms5"
-							})
-							.lighthouseWidget("milestone6", {
-								milestone: 6,
-								timeDiv: "ms6"
-							})
-							.lighthouseWidget("milestone7", {
+							dashBoard.lighthouseWidget("lighthouse", {
 								milestone: 7,
-								timeDiv: "ms7"
-							})
-							.sequence( "sequence1", {
-								duration: 5 // seconds
-							})
-							.sequence( "sequence2", {
-								duration: 5 // seconds
+								time: true
 							});
 						}
 						else{
@@ -118,24 +88,7 @@
 	      	<div class="title">
 	          <h1>Popcorn.js</h1>
 	          <img src="assets/popcornjs.png">
-						<div id="sequence1" align="right" class="test">
-							<div id="milestone1" class="sequence1"></div>
-							<div id="milestone2" class="sequence1"></div>
-							<div id="milestone3" class="sequence1"></div>
-							<div id="milestone4" class="sequence1"></div>
-							<div id="milestone5" class="sequence1"></div>
-							<div id="milestone6" class="sequence1"></div>
-							<div id="milestone7" class="sequence1"></div>
-						</div>
-						<div id="sequence2" align="right" class="test">
-							<div id="ms1" class="sequence2"></div>
-							<div id="ms2" class="sequence2"></div>
-							<div id="ms3" class="sequence2"></div>
-							<div id="ms4" class="sequence2"></div>
-							<div id="ms5" class="sequence2"></div>
-							<div id="ms6" class="sequence2"></div>
-							<div id="ms7" class="sequence2"></div>
-						</div>
+						<div id="lighthouse" width="230" height="230"><div id="milestone"></div></div>
 	        </div>
 	      </div>
 	      
