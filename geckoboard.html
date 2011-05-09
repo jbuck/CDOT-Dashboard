@@ -12,19 +12,43 @@
     <div id="container">
       <!-- Top Row -->
       <div class="widget widget-size-1x1" style="top: 0px; left: 0px;">
-        <div class="logo-box" style="background: url('assets/cdot.png') no-repeat 50% 50%"></div>
+        <div class="widget-body logo-box" style="background: url('assets/cdot.png') no-repeat 50% 50%"></div>
       </div>
       <div class="widget widget-size-1x1" style="top: 0px; left: 240px;">
-        Mountain View Time
+        <header>
+          <section>Mountain View</section>
+        </header>
+        <section class="widget-time">
+          <span class="t-size-x60" id="pacific-time">12:10</span>
+          <span class="t-size-x30" id="pacific-time-meridian">PM</span>
+        </section>
+        <section class="widget-body">
+          <div class="widget-date">
+            <div class="t-size-x24" id="pacific-dow">Monday</div>
+            <div class="t-size-x24 t-muted" id="pacific-date">9 May 2011</div>
+          </div>
+        </section>
       </div>
       <div class="widget widget-size-3x1" style="top: 0px; left: 480px;">
         Title
       </div>
       <div class="widget widget-size-1x1" style="top: 0px; left: 1200px;">
-        Toronto Time
+        <header>
+          <section>Toronto</section>
+        </header>
+        <section class="widget-time">
+          <span class="t-size-x60" id="eastern-time">12:10</span>
+          <span class="t-size-x30" id="eastern-time-meridian">PM</span>
+        </section>
+        <section class="widget-body">
+          <div class="widget-date">
+            <div class="t-size-x24" id="eastern-dow">Monday</div>
+            <div class="t-size-x24 t-muted" id="eastern-date">9 May 2011</div>
+          </div>
+        </section>
       </div>
       <div class="widget widget-size-1x1" style="top: 0px; left: 1440px;">
-        <div class="logo-box" style="background: url('assets/fedora.png') no-repeat 50% 50%"></div>
+        <div class="widget-body logo-box" style="background: url('assets/fedora.png') no-repeat 50% 50%"></div>
       </div>
       
       <!-- Twitter Row -->
@@ -48,7 +72,7 @@
       
       <!-- Bottom Row -->
       <div class="widget widget-size-1x1" style="top: 810px; left: 0px;">
-        <div class="logo-box" style="background: url('assets/processingjs.png') no-repeat 50% 50%"></div>
+        <div class="widget-body logo-box" style="background: url('assets/processingjs.png') no-repeat 50% 50%"></div>
       </div>
       <div class="widget widget-size-1x1" style="top: 810px; left: 240px;">
         Processing.js tickets open/closed on latest milestone
@@ -66,7 +90,7 @@
         Graph of failed/complete/in-progress/cancelled Fedora ARM builds
       </div>
       <div class="widget widget-size-1x1" style="top: 810px; left: 1440px;">
-        <div class="logo-box" style="background: url('assets/popcornjs.png') no-repeat 50% 50%"></div>
+        <div class="widget-body logo-box" style="background: url('assets/popcornjs.png') no-repeat 50% 50%"></div>
       </div>
     </div>
   </body>
