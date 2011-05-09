@@ -34,13 +34,13 @@
             {
                 jsonurl="http://search.twitter.com/search.json?rpp="+options.results
                 //+"&show_user="+options.showUser
-                +"&q="+options.query;
+                +"&q="+escape(options.query);
                 
             }
             else
             {
                  //For some reason twitter only returns results-1 tweets in timeline mode.
-                jsonurl="http://twitter.com/statuses/user_timeline/" + options.query
+                jsonurl="http://twitter.com/statuses/user_timeline/" + escape(options.query)
                 +".json?count=" + (options.results+1);
             }
             $.getJSON(jsonurl+"&callback=?",{},function(json){
@@ -60,7 +60,7 @@
                         newTweets[i].user = options.query;
                     });
                 }
-                $(targetDiv).innerHTML = "";
+                while (targetDiv.hasChildNodes()) targetDiv.removeChild(targetDiv.firstChild);
                 var modeString = (options.mode == "search")?"Results for ":"Timeline of ";
                 $(targetDiv).append("<"+ options.headerType +">" + modeString + options.query + "</"+options.headerType+">");
                 
@@ -73,6 +73,10 @@
             },function(){});
         };
         updateTweets();
-        //window.setInterval(updateTweets, options.tweetRefreshInterval);
+        if (options.refreshInterval < 50000)
+        {
+            options.refreshInterval = 50000;
+        }
+        window.setInterval(updateTweets, options.refreshInterval);
     });
 }());

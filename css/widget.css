@@ -106,4 +106,7 @@ body {
 
 .t-muted {
   color: #707275;
+
+.twitter{
+  overflow:hidden;
 }

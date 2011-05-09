@@ -69,7 +69,7 @@
           }).appendTo(targetDiv);
         }
       });
-    }
+    };
     getBuildStatus();
     window.setInterval ( getBuildStatus, 18000000 );
   });

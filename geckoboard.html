@@ -5,8 +5,46 @@
     
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/widget.css">
-    
-    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script> 
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="dashBoard.js" type="text/javascript"></script>
+		<script src="milestone.js" type="text/javascript"></script>
+		<script src="sequencer.js" type="text/javascript"></script>
+		<script src="Widgets/lighthouse.js" type="text/javascript"></script>
+    <script src="Widgets/clockWidget.js" type="text/javascript"></script>
+    <script src="Widgets/fedoraBuildWidget.js" type="text/javascript"></script>
+    <script src="Widgets/dateWidget.js" type="text/javascript"></script>
+    <script src="Widgets/twitterWidget.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    (function() {
+					var ready = false;
+					
+					// Doing Google stuff here because it wasn't working properly inside the lighthouse script
+					google.load('visualization', '1', {'packages':['corechart']});
+      
+					// Set a callback to run when the Google Visualization API is loaded.
+					google.setOnLoadCallback(function(){ ready = true; });
+					
+					document.addEventListener( "DOMContentLoaded", function(){ check(); }, false );
+					
+					var check = function(){
+						if(ready){
+							dashBoard.twitterWidget("twitterpopproc", {
+									cssClass: "twitter",
+									refreshInterval: 500000,
+									results: 5,
+									mode: "search",
+									showUser: "true",
+									query: "#popcornjs OR #processingjs",
+									headerType: "h2"
+							})
+						}
+						else{
+							setTimeout( check, 10 );
+						}
+					}
+      })();
+    </script>
   </head>
   <body>
     <div id="container">
@@ -52,7 +90,7 @@
       </div>
       
       <!-- Twitter Row -->
-      <div class="widget widget-size-max-x" style="top: 240px; left: 0px;">
+      <div id = "twitterpopproc" class="widget widget-size-max-x" style="top: 240px; left: 0px;">
         Twitter
       </div>
       
