@@ -1,7 +1,7 @@
 .testClass table td {
   font-family: arial;
   font-weight: bolder;
-  color: #330066;
+  color: #FFFFFF;
   font-size: 11pt;
   vertical-align: center;
 }
@@ -14,7 +14,8 @@
 }
 .testClass table tr:first-child th,
 table tr:first-child td {
-  border-top: 0;
+  border: 1px solid black;
+  border-top: 1;
 }
 .testClass table tr:last-child td {
   border-bottom: 0;
