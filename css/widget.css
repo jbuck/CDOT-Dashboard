@@ -106,8 +106,9 @@ body {
 
 .t-muted {
   color: #707275;
+}
 
-.twitter{
+.twitter {
   overflow:hidden;
   font-size: 250%;
   text-align: center;
