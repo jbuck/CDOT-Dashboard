@@ -36,7 +36,7 @@
 
   dashBoard.widget( "sequence", function( id, options ){
 		
-    var sequences = document.getElementById( id ).getElementsByTagName('div'),
+    var sequences = getElementsByClassName( document.getElementById( id ), id ),
         index = 0,
         showSequence = function() {
           sequences[ index++ ].style.display = "none";
