@@ -25,7 +25,7 @@
     var getBuildStatus = function() {
       
       var buildStats = [];
-      var icons = { "complete": "icons/success.png", "building": "icons/building.png", "failed": "icons/fail.png", "cancelled": "icons/cancelled.png"};
+      var icons = { "complete": "Widgets/icons/success.png", "building": "Widgets/icons/building.png", "failed": "Widgets/icons/fail.png", "cancelled": "Widgets/icons/cancelled.png"};
       
       $.ajax({
         url: "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=http://arm.koji.fedoraproject.org/koji/recentbuilds&num=10",
