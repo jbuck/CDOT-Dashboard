@@ -6,26 +6,26 @@
   /* Fedora-ARM Widget */
 
   dashBoard.widget( "fedoraBuildWidget" , function( id, options ){
+        
+    var tableBorder     = options.border      ? options.border      : 1;
+    var tableHeight     = options.height      ? options.height      : "480px";
+    var tableWidth      = options.width       ? options.width       : "300px";
+    var tableClass      = options.tableClass  ? options.tableClass  : null;
+    var cellSpacing     = options.cellSpacing ? options.cellSpacing : 0;
     
     var targetDiv = document.getElementById ( id );
-    
+
     if (targetDiv.className && options.cssClass) {
       targetDiv.className = targetDiv.className + " " + options.cssClass;
     }
     else if ( options.cssClass ) {
       targetDiv.className = options.cssClass;
     }
-
-    var tableBorder     = options.border      ? options.border      : 0;
-    var tableHeight     = options.height      ? options.height      : "480px";
-    var tableWidth      = options.width       ? options.width       : "300px";
-    var tableClass      = options.tableClass  ? options.tableClass  : null;
-    var cellSpacing     = options.cellSpacing ? options.cellSpacing : 0;
     
     var getBuildStatus = function() {
       
       var buildStats = [];
-      var states = { "complete": "#33CC33", "building": "#FFFF33", "failed": "#FF0033", "cancelled": "#FF3300"};
+      var icons = { "complete": "icons/success.png", "building": "icons/building.png", "failed": "icons/fail.png", "cancelled": "icons/cancelled.png"};
       
       $.ajax({
         url: "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=http://arm.koji.fedoraproject.org/koji/recentbuilds&num=10",
@@ -47,18 +47,16 @@
             var build = s[1].split( ",", 2 )[0];
             if ( date ) {
               date = new Date(date);
-              //date = date.toLocaleString() + " " + outcome;
             } else {
               date = new Date();
-              //date = date.toLocaleString() + " " + outcome;
             }
+            var s = '<tr height="25px" style="max-height: 25px"><td style="text-align: center; max-height: 25px">' + 
+              date.toLocaleString() + '</td><td style="text-align: left; max-height: 25px">' + build +
+              '</td><td style="text-align: left; max-height: 25px"><img height="16px" width="16px" src="' + 
+              icons[outcome] + '"></img></td></tr>';
+            buildStats.push(s);
 
-            buildStats.push( '<tr><td style="text-align: center; min-height: 30px; background: ' + states[outcome] + '">' + 
-              date.toLocaleString() + '</td><td style="text-align: left; min-height: 30px; background: ' + 
-              states[outcome] + '">' + outcome  +'</td><td style="text-align: left; min-height: 30px; background: ' + 
-              states[outcome] + '">' + build + '</td></tr>');
           }
-
           targetDiv.innerHTML = "";
 
           $( '<table/>', {
@@ -71,7 +69,7 @@
           }).appendTo(targetDiv);
         }
       });
-    }
+    };
     getBuildStatus();
     window.setInterval ( getBuildStatus, 18000000 );
   });

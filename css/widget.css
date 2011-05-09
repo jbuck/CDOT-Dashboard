@@ -1,0 +1,59 @@
+body {
+  background: #101213;
+  font:13px/1.231 arial,helvetica,clean,sans-serif;
+}
+
+#container {
+  width: 1670px;
+  margin: 5px auto;
+  position: relative;
+}
+
+.widget {
+  background: #232526 url(assets/widget_grad.png) no-repeat 100% 0px;
+  color: white;
+  box-shadow: 2px 0 3px #0d0d0d, -2px 0 3px #0d0d0d, 0 3px 3px #0d0d0d, 0 -2px 3px #0d0d0d;
+  -moz-box-shadow: 2px 0 3px #0d0d0d, -2px 0 3px #0d0d0d, 0 3px 3px #0d0d0d, 0 -2px 3px #0d0d0d;
+  -webkit-box-shadow: 2px 0 3px #0d0d0d, -2px 0 3px #0d0d0d, 0 3px 3px #0d0d0d, 0 -2px 3px #0d0d0d;
+  position: absolute;
+}
+
+.widget-size-1x1 {
+  width: 230px;
+  height: 230px;
+  
+}
+
+.widget-size-2x1 {
+  width: 470px;
+  height: 230px;
+  
+}
+
+.widget-size-1x2 {
+  width: 230px;
+  height: 470px;
+  
+}
+
+.widget-size-2x2 {
+  width: 470px;
+  height: 470px;
+  
+}
+
+.widget-size-3x1 {
+  width: 710px;
+  height: 230px;
+  
+}
+
+.widget-size-max-x {
+  width: 100%;
+  height: 80px;
+}
+
+.logo-box {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog Feed Plug-in Demo</title>
+  <link rel="stylesheet" type="text/css" href="http://www.google.com/uds/solutions/dynamicfeed/gfdynamicfeedcontrol.css" ></link>
+  <script src="https://www.google.com/jsapi" type="text/javascript"></script>  
+  <script src="http://www.google.com/uds/solutions/dynamicfeed/gfdynamicfeedcontrol.js" type="text/javascript"></script>  
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script> 
+  <script src="../dashBoard.js" type="text/javascript"></script>
+  <script src="blogReaderWidget.js" type="text/javascript"></script>
+  
+  <script>
+    (function() {
+    var ready = false;
+     
+    // Doing Google stuff here because it wasn't working properly inside the lighthouse script
+    google.load( "feeds", "1");
+
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.setOnLoadCallback(function(){ ready = true; });
+     
+    document.addEventListener( "DOMContentLoaded", function(){ check(); }, false );
+     
+    var check = function(){
+    if(ready){
+      dashBoard.blogFeed({
+        target: "feed1",
+        url: "http://zenit.senecac.on.ca/~chris.tyler/planet/atom.xml",
+        title: "Planet CDOT",
+        orientation: "Vertical"
+      } );
+    }
+    else{
+    setTimeout( check, 10 );
+    }
+    }
+          })();
+
+
+      
+  </script>
+</head>
+<body>
+  <div id="feed1"></div>
+</body>
+</html>
