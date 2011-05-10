@@ -50,7 +50,7 @@
 
     options.gradient = options.gradient || "time";
     if (!options.what)
-      options.what = "";
+      options.what = "due";
     
     setInterval( function() {
 		if(milestone.getTime() - new Date().getTime() > 0)

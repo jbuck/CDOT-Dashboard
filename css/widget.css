@@ -158,3 +158,17 @@ body {
 .lighthouse {
   padding: 15px;
 }
+
+.github {
+  padding: 15px;
+}
+
+.github > div > h2 {
+  color: #707275;
+}
+
+.github > div > ul {
+  height: 380px;
+  overflow: hidden;
+}
+

@@ -41,22 +41,6 @@
       var date = typeof inDate === 'Date' ? inDate : new Date(inDate);
       return new Date(date.getFullYear(), date.getMonth(), date.getDay(), 0, 0, 0, 0);
     }
-    // $.ajax({
-    // type: "GET",
-    // url: "http://github.com/api/v2/json/repos/show/jbuck/" + projectName + "/contributors",
-    // dataType: "json",
-    // success: function(result) {
-    // var contributors =  result.contributors,
-    // arrayIdx;
-    // $('#githubContributors').append('<h1> ' + projectName + ' Contributors');
-    // for (arrayIdx = 0; arrayIdx < contributors.length; arrayIdx++) {
-    // var contributor = contributors[arrayIdx];
-    // if (contributor.login !== "invalid-email-address") {
-    // $('#githubContributors').append('<p>' + contributor.name + '</p>');
-    // }
-    // }
-    // }
-    // });
 
     $.getJSON( "http://github.com/api/v2/json/commits/list/" + userId + "/" + projectName + "/" + branchName + "?callback=?", function(result) {
       var commits = result.commits,
@@ -69,7 +53,7 @@
         var targetDiv = $('<div id="' + uniqueDates[arrayIdx].getTime() + '">');
         //targetDiv.addClass('oneDayOfCommits');
         $('#' + id).append(targetDiv);
-        targetDiv.append('<h2>' + uniqueDates[arrayIdx].toDateString() + '</h2>');
+        targetDiv.append('<h2 class="t-muted">' + uniqueDates[arrayIdx].toDateString() + '</h2>');
         targetDiv.addClass('navcontainer');
         targetDiv.append('<ul class="navlist"></ul>');
         targetDiv.addClass(id);
@@ -82,7 +66,7 @@
       for(arrayIdx = 0; arrayIdx < commits.length; arrayIdx += 1) {
         var commit =  commits[arrayIdx],
         committedDate = normalizeDate(commit.committed_date);
-        $('#' + committedDate.getTime() + '> ul').append('<li>' + commit.author.name + ' committed with message "' + commit.message + '"</li>');
+        $('#' + committedDate.getTime() + '> ul').append('<li><span class="t-muted-more">' + commit.author.name + ':</span><span> ' + commit.message + '</span></li>');
       }
     });
   });
