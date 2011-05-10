@@ -10,12 +10,13 @@
       targetDiv.className = targetDiv.className + " " + options.cssClass;
     }
 
-    var days = ["Sun", "Mon" , "Tue", "Wed","Thu","Fri","Sat" ];
-    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var days = ["Sunday", "Monday" , "Tuesday", "Wednesday","Thursday","Friday","Saturday" ];
+    var months = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     var updateTime = function() {
       var now = new Date();
-      targetDiv.innerHTML = days[now.getDay()] + " " + months[now.getMonth()] + " " + now.getDate();
+			now = options.timeZone == "Mountain" ? new Date(now-3600000*2) : now;
+      targetDiv.innerHTML = days[now.getDay()] + " " + months[now.getMonth()] + " " + now.getDate() + " " + now.getFullYear();
     };
     updateTime();
     window.setInterval ( updateTime, 60000);
