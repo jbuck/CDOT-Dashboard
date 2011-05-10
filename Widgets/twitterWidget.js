@@ -67,9 +67,15 @@
                 
                 var displayTweet = function() {
                   var userImage = "<img src='" + newTweets[ tweetIndex ].img +"'/>";
-                  var userLink = "<a href='http://twitter.com/"+ newTweets[ tweetIndex ].user + "'>" + userImage + "</a>";
-                  options.image && $(targetDiv).append(userLink);
-                  targetDiv.innerHTML = newTweets[ tweetIndex ].text;
+                  var userLink; 
+                  if (options.image)
+                  {
+                    userLink = "<a href='http://twitter.com/"+ newTweets[ tweetIndex ].user + "'>" + userImage + "</a>";
+                  }else
+                  {
+                    userLink = newTweets[tweetIndex].user + ": ";
+                  }
+                  targetDiv.innerHTML = userLink + newTweets[ tweetIndex ].text;
 
                   if ( !newTweets[ ++tweetIndex ] ) {
                     tweetIndex = 0;
