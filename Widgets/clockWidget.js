@@ -1,4 +1,4 @@
-//CDOT clockWidget widget
+ //CDOT clockWidget widget
 // 
 
 (function() {
@@ -12,12 +12,12 @@
     
     var updateTime = function() {
 			var timeNow = new Date();
-			timeNow = options.timeZone == "Mountain" ? new Date(timeNow - 3600000*2) : timeNow;	
+			timeNow = options.timeZone == "Mountain" ? new Date(timeNow - 1000 * 60 * 60 *3) : timeNow;	
 			var hours   = timeNow.getHours();
 			var minutes = timeNow.getMinutes();
-			var timeString = "" + ((hours > 12) ? hours - 12 : (hours == 0 ? hours = 12 : hours));
-			timeString  += ((minutes < 10) ? ":0" : ":") + minutes;
-			timeString  += (hours >= 12) ? " PM" : " AM";
+			var timeString = "<span class='t-size-x60'>" + ((hours > 12) ? hours - 12 : (hours == 0 ? hours = 12 : hours));
+			timeString  += ((minutes < 10) ? ":0" : ":") + minutes + "</span>";
+			timeString  += "<span class='t-size-x30'>" + ((hours >= 12) ? " PM" : " AM") + "</span>";
 			targetDiv.innerHTML = timeString;
     };
     updateTime();
