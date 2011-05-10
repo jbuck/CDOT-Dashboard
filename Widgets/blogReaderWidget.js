@@ -20,9 +20,13 @@
       var gf = new GFdynamicFeedControl( options.url, newdiv, {
         vertical: options.orientation.toLowerCase() == "vertical" ? true : false,
         horizontal: options.orientation.toLowerCase() == "horizontal" ? true : false,
-        title: options.title = options.title || "Blog"
+        numResults: 10,
+        displayTime: 10 * 1000,
+        scrollOnFadeOut: false,
+        pauseOnHover: false
       });  
       
+      /*
       var setHeight = function() { 
         var d = document.getElementsByClassName('gfg-entry');
         if (d.length == 0) {
@@ -34,6 +38,7 @@
         }
       }
       setHeight();
+      */
     };
     
     initialize();

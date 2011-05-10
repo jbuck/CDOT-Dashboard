@@ -45,22 +45,21 @@
 			newdivz.id = namez;
 		}
 		
-		if(open[options.milestone-1] == 0 || closed[options.milestone-1] == 0){
-			open[options.milestone-1] == 0 ? width = "100%" : width = "0%";
+		if(open[options.milestone] == 0 || closed[options.milestone] == 0){
+			open[options.milestone] == 0 ? width = "100%" : width = "0%";
 		}
 		else{
-			width = (open[options.milestone-1]/(closed[options.milestone-1]+open[options.milestone-1]));
+			width = (open[options.milestone]/(closed[options.milestone]+open[options.milestone]));
 			width = 100 - (width*100) + "%";
 		}
 		
 		wordz = document.createElement("p");
-		wordz.style.fontSize = "25px";
-		wordz.innerHTML = "<p>" + options.project + " " + title[options.milestone-1] + "</p>";
+		wordz.innerHTML = "<p>"+ title[options.milestone] + "</p><p>"+Math.round(closed[options.milestone]/(open[options.milestone]+closed[options.milestone])*100) + "% complete</p>";
 		
 		words = document.createElement("p");
 		words2 = document.createElement("p");
-      		words.innerHTML = "<strong><b>" + open[options.milestone-1] + "</b></strong> open tickets";
-		words2.innerHTML = "<b><strong>" + closed[options.milestone-1] +  "</strong></b> closed tickets";
+      		words.innerHTML = "<span class='t-negative'>" + open[options.milestone] + "</span> open tickets";
+		words2.innerHTML = "<span class='t-positive'>" + closed[options.milestone] +  "</span> closed tickets";
 		document.getElementById(id).appendChild(wordz);
 		document.getElementById(id).appendChild(words);
 		document.getElementById(id).appendChild(words2);
@@ -74,7 +73,7 @@
 		newdivz.style.width = "200px";
 		newdivz.style.height = "25px";
 
-		newdiv.style.backgroundColor = "green";
+		newdiv.style.backgroundColor = "#77AB13";
 		newdiv.style.width = width;
 		newdiv.style.height = newdivz.style.height;
 		newdiv.innerHTML = "&nbsp;";
@@ -83,15 +82,11 @@
 
 		newdiv_ = document.createElement("div");
 		newdiv_.id = "times" + options.milestone;
-		newdiv_.style.fontSize = "15px";	
-		newdiv_.style.marginTop = "10px";	
-		
 
 		if(options.time){
 			dashBoard.milestone( newdiv_.id, {
-           		what: title[options.milestone-1],
-            		when: dueOn[options.milestone-1],
-            		gradient: "days"
+            		when: dueOn[options.milestone],
+            		gradient: "Days"
           	});
 		}
 

@@ -7,8 +7,8 @@
 
   dashBoard.widget( "fedoraBuildWidget" , function( id, options ){
         
-    var tableBorder     = options.border      ? options.border      : 1;
-    var tableHeight     = options.height      ? options.height      : "480px";
+    var tableBorder     = options.border      ? options.border      : 0;
+    var tableHeight     = options.height      ? options.height      : "430px";
     var tableWidth      = options.width       ? options.width       : "300px";
     var tableClass      = options.tableClass  ? options.tableClass  : null;
     var cellSpacing     = options.cellSpacing ? options.cellSpacing : 0;
@@ -28,7 +28,7 @@
       var icons = { "complete": "Widgets/icons/success.png", "building": "Widgets/icons/building.png", "failed": "Widgets/icons/fail.png", "cancelled": "Widgets/icons/cancelled.png"};
       
       $.ajax({
-        url: "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=http://arm.koji.fedoraproject.org/koji/recentbuilds&num=10",
+        url: "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=http://arm.koji.fedoraproject.org/koji/recentbuilds&num=12",
         cache: false,
         dataType: 'json',
         success: function (data) {
@@ -50,9 +50,11 @@
             } else {
               date = new Date();
             }
-            var s = '<tr height="25px" style="max-height: 25px"><td style="text-align: center; max-height: 25px">' + 
-              date.toLocaleString() + '</td><td style="text-align: left; max-height: 25px">' + build +
-              '</td><td style="text-align: left; max-height: 25px"><img height="16px" width="16px" src="' + 
+            var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            var dateString = months[date.getMonth()] + " " + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+            var s = '<tr><td>' + 
+              dateString + '</td><td style="text-align: left;">' + build +
+              '</td><td ><img height="16px" width="16px" src="' + 
               icons[outcome] + '"></img></td></tr>';
             buildStats.push(s);
 
@@ -61,11 +63,7 @@
 
           $( '<table/>', {
                 html: buildStats.join(''),
-                "border"      : tableBorder,
-                "height"      : tableHeight,
-                "width"       : tableWidth,
                 "class"       : tableClass,
-                "cellspacing" : cellSpacing
           }).appendTo(targetDiv);
         }
       });

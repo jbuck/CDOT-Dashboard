@@ -1,6 +1,6 @@
 body {
   background: #101213;
-  color: #444749;
+  color: #D3D4D4;
   font:13px/1.231 arial,helvetica,clean,sans-serif;
 }
 
@@ -16,6 +16,8 @@ body {
   -moz-box-shadow: 2px 0 3px #0d0d0d, -2px 0 3px #0d0d0d, 0 3px 3px #0d0d0d, 0 -2px 3px #0d0d0d;
   -webkit-box-shadow: 2px 0 3px #0d0d0d, -2px 0 3px #0d0d0d, 0 3px 3px #0d0d0d, 0 -2px 3px #0d0d0d;
   position: absolute;
+  border-top: 1px solid #323434;
+  border-bottom: 1px solid #232526;
 }
 
 .widget-size-1x1 {
@@ -54,13 +56,12 @@ body {
 }
 
 .logo-box {
-  width: 100%;
-  height: 100%;
+  width: 230px;
+  height: 190px;
 }
 
 .widget > header {
   border-bottom: 1px solid #151617;
-  border-top: 1px solid #323434;
   height: 17px;
   overflow: hidden;
   padding: 10px 15px 11px;
@@ -92,6 +93,10 @@ body {
   padding: 10px 15px;
 }
 
+.t-size-x18 {
+  font-size: 150%;
+}
+
 .t-size-x24 {
   font-size: 175%;
 }
@@ -112,8 +117,44 @@ body {
   color: #707275;
 }
 
+.t-muted-more {
+  color: #444749;
+}
+
+.t-negative {
+  color: #AE432E;
+}
+
+.t-positive {
+  color: #77AB13;
+}
+
 .twitter {
   overflow:hidden;
   font-size: 250%;
-  text-align: center;
+  background-color: #1A1C1D;
+  margin: 10px;
+  height: 50px;
+  padding: 5px;
+  vertical-align: middle;
+  line-height: 1.5em;
+  box-shadow: 2px 2px 2px #111 inset;
+  border-radius: 3px;
+  border-bottom: 1px solid #323434;
+  border-right: 1px solid #323434;
+}
+
+.fedora-build table {
+  margin: 15px;
+  width: 440px;
+}
+
+.fedora-build table tr td {
+  border-bottom: 1px dotted #333333;
+  padding: 2px;
+  overflow: hidden;
+}
+
+.lighthouse {
+  padding: 15px;
 }

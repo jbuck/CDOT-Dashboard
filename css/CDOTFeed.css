@@ -5,16 +5,17 @@
   overflow : hidden;
   text-align : center;
   font-family: "Arial", sans-serif;
-  font-size: 12px;
+  /*font-size: 12px;*/
 }
 
 .gfg-title {
-  font-size: 14px;
+  /*font-size: 14px;*/
   font-weight : bold;
   color : #FFFFFF;
   line-height : 50px;
   overflow : hidden;
   white-space : nowrap;
+  display: none;
   
 }
 
@@ -23,7 +24,7 @@
 }
 
 .gfg-subtitle {
-  font-size: 12px;
+  /*font-size: 12px;*/
   font-weight : bold;
   color : #FFFFFF;
   line-height : 1.4em;
@@ -47,7 +48,8 @@
   position : relative;
   overflow : hidden;
   text-align : left;
-  margin-top : 3px;
+  margin-top : 15px;
+  height:400px;
 }
 
 /* To allow correct behavior for overlay */
@@ -56,8 +58,8 @@
   background: rgba(0, 0, 0, 1)
   width : auto;
   height : 100%;
-  padding-left : 20px;
-  padding-right : 5px;
+  padding-left : 15px;
+  padding-right : 15px;
 }
 .gfg-list a {
   color: #FFFFFF;
@@ -69,6 +71,7 @@
   overflow : hidden;
   text-align : left;
   margin-bottom : 5px;
+  display: none;
 }
 
 .gfg-listentry {
@@ -78,7 +81,7 @@
   text-overflow : ellipsis;
   -o-text-overflow : ellipsis;
   padding-left : 15px;
-  padding-right : 5px;
+  padding-right : 15px;
   margin-left : 5px;
   margin-right : 5px;
 }
@@ -95,12 +98,12 @@
  */
 
 .gfg-root .gfg-entry .gf-result .gf-title {
-  font-size: 14px;
+  /*font-size: 14px;*/
   line-height : 1.2em;
   overflow : hidden;
-  white-space : nowrap;
+  /*white-space : nowrap;
   text-overflow : ellipsis;
-  -o-text-overflow : ellipsis;
+  -o-text-overflow : ellipsis;*/
   margin-bottom : 2px;
 }
 
@@ -126,7 +129,7 @@
   overflow : hidden;
   text-align : center;
   font-family: "Arial", sans-serif;
-  font-size: 13px;
+  /*font-size: 13px;*/
   border: 1px solid #AAAAAA;
   padding : 5px;
   margin-right : 80px;

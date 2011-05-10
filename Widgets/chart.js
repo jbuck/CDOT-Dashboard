@@ -50,16 +50,15 @@
 
 				new google.visualization.PieChart(document.getElementById(id)).
 				draw(data,{
-				width:230, height:230,
+				width:230, height:190,
 				is3D: true,
-				title: options.project,
-				titleTextStyle: {color:"#FFFFFF", fontSize:24},
 				isStacked: true,
 				chartArea: {width:"100%"},
 				backgroundColor: "#232526",
 				gridlineColor: "#232526",
-				legend: "bottom",
-				legendTextStyle:{color: "#FFFFFF", fontName: "Arial", fontSize:8},
+				pieSliceTextStyle: {color: "#FFFFFF", fontName: "Arial", fontSize:13},
+				legend: "right",
+				legendTextStyle:{color: "#FFFFFF", fontName: "Arial", fontSize:18},
 				colors: ['red','green', "orange", "blue", "brown"]
 				})
 		

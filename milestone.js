@@ -21,6 +21,10 @@
 
       return Math.floor( diff / 86400000 );
     },
+    Days: function( diff ) {
+
+      return Math.floor( diff / 86400000 );
+    },
     hours: function( diff ) {
 
       return Math.floor( diff / 3600000 );
@@ -45,7 +49,9 @@
         milestone = new Date( options.when );
 
     options.gradient = options.gradient || "time";
-
+    if (!options.what)
+      options.what = "";
+    
     setInterval( function() {
 		if(milestone.getTime() - new Date().getTime() > 0)
       document.getElementById( id ).innerHTML = options.gradient + " until " + options.what + ": " + gradients[ options.gradient ]( milestone.getTime() - new Date().getTime() );
