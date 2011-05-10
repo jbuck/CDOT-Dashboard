@@ -15,8 +15,8 @@
 
     var updateTime = function() {
       var now = new Date();
-			now = options.timeZone == "Mountain" ? new Date(now-3600000*2) : now;
-      targetDiv.innerHTML = days[now.getDay()] + " " + months[now.getMonth()] + " " + now.getDate() + " " + now.getFullYear();
+			now = options.timeZone == "Mountain" ? new Date(now-3600000*3) : now;
+      targetDiv.innerHTML = "<div class='t-size-x24 t-muted-more'>" + days[now.getDay()] + "</div><div class='t-size-x24 t-muted'>" + now.getDate() + " " + months[now.getMonth()] + " " + now.getFullYear() + "</div>";
     };
     updateTime();
     window.setInterval ( updateTime, 60000);
