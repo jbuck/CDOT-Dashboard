@@ -36,11 +36,12 @@
             if(ready){
               dashBoard.twitterWidget("twitterpopproc", {
                   refreshInterval: 500000,
-                  displayInterval: 8000,
+                  displayInterval: 10000,
                   results: 25,
                   mode: "search",
-                  query: "#popcornjs OR #processingjs",
-                  image: false
+                  query: "#popcornjs OR #processingjs OR @humphd",
+                  date: true,
+                  image: true
               }).blogReaderWidget({
                   target: "blogFeed",
                   url: "http://zenit.senecac.on.ca/~chris.tyler/planet/atom.xml",

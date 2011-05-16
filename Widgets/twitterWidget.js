@@ -7,11 +7,13 @@
         if(targetDiv.className && options.cssClass) {
           targetDiv.className = targetDiv.className + " " + options.cssClass;
         }
+        var innerIntervalID = -1;
             
         var Tweet = function () {
               this.img = null;
               this.user = null;
               this.text = null;
+              this.date = null;
             },
             tweetIndex = 0;
         
@@ -20,6 +22,10 @@
         var lastUpdatePoint = 0;
         
         var updateTweets = function() {
+            if (innerIntervalID != -1)
+            {
+                clearInterval(innerIntervalID);
+            }
             //All of the following variables are expected as properties in the options that are passed in
             //ms between calls to refresh the feed -->
             //var refreshInterval=   5000;
@@ -52,6 +58,7 @@
                         newTweets[i].img = t.profile_image_url;
                         newTweets[i].text = t.text;
                         newTweets[i].user = t.from_user;
+                        newTweets[i].date = t.created_at;
                     });
                 }else{
                     $.each(json, function(i, t){
@@ -59,6 +66,7 @@
                         newTweets[i].img = t.user.profile_image_url;
                         newTweets[i].text = t.text;
                         newTweets[i].user = options.query;
+                        newTweets[i].date = t.created_at;
                     });
                 }
                 while (targetDiv.hasChildNodes()) targetDiv.removeChild(targetDiv.firstChild);
@@ -67,7 +75,16 @@
                 
                 var displayTweet = function() {
                   var userImage = "<img src='" + newTweets[ tweetIndex ].img +"'/>";
-                  var userLink; 
+                  var userLink;
+                  var userDate;
+                  if (options.date)
+                  {
+                    //userDate = "<div id='twitDate'>"+newTweets[tweetIndex].date+"</div>";
+                    var dateSplit = newTweets[tweetIndex].date.split(' ');
+                    userDate = dateSplit[0] + ' '+dateSplit[1] + ' '+dateSplit[2] + ' '+dateSplit[3]+ ' ';
+                  }else{
+                    userDate = "";
+                  }
                   if (options.image)
                   {
                     userLink = "<a href='http://twitter.com/"+ newTweets[ tweetIndex ].user + "'>" + userImage + "</a>";
@@ -75,7 +92,9 @@
                   {
                     userLink = newTweets[tweetIndex].user + ": ";
                   }
-                  targetDiv.innerHTML = userLink + newTweets[ tweetIndex ].text;
+                  //targetDiv.innerHTML = userLink + userDate + "<div id='twitText'>"+newTweets[ tweetIndex ].text+"</div>";
+                  targetDiv.innerHTML = userLink;
+                  $(targetDiv).append(userDate +newTweets[ tweetIndex ].text);
 
                   if ( !newTweets[ ++tweetIndex ] ) {
                     tweetIndex = 0;
@@ -84,7 +103,7 @@
                 };
                 displayTweet();
                 
-                setInterval( displayTweet, options.displayInterval );
+                innerIntervalID = setInterval( displayTweet, options.displayInterval );
             });
         };
         updateTweets();
