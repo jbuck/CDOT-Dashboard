@@ -25,7 +25,7 @@
     var getBuildStatus = function() {
       
       var buildStats = [];
-      var icons = { "complete": "Widgets/icons/success.png", "building": "Widgets/icons/building.png", "failed": "Widgets/icons/fail.png", "cancelled": "Widgets/icons/cancelled.png"};
+      var icons = { "complete": "Widgets/icons/success.png", "building": "Widgets/icons/building.png", "failed": "Widgets/icons/fail.png", "canceled": "Widgets/icons/fail.png"};
       
       $.ajax({
         url: "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=http://arm.koji.fedoraproject.org/koji/recentbuilds&num=12",
@@ -51,7 +51,9 @@
               date = new Date();
             }
             var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            var dateString = months[date.getMonth()] + " " + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+            var dateString = months[date.getMonth()] + " " + date.getDate() + " ";
+            dateString = dateString + (date.getHours() < 10 ? "0" + date.getHours() : date.getHours()) + ":";
+            dateString = dateString + (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes());
             var s = '<tr><td>' + 
               dateString + '</td><td style="text-align: left;">' + build +
               '</td><td ><img height="16px" width="16px" src="' + 
