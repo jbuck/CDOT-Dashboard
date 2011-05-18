@@ -7,8 +7,8 @@
 
 		var tickets, open, title, dueOn, url;
 		
-		options.project == "Processing" ? url = "http://scotland.proximity.on.ca/sdowne/sqlite/jsonp.php?callback=?&service=lighthouse-processing" :
-						  url = "http://scotland.proximity.on.ca/sdowne/sqlite/jsonp.php?callback=?&service=lighthouse-popcorn";
+		options.project === "Processing" ? url = "fakedata/lighthouse-pjs.json" :
+						  url = "fakedata/lighthouse-popcorn.json";
 
 		// JQuery used to get the JSON data from our server, values stored in arrays named accordingly
 		$.getJSON(

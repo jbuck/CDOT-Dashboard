@@ -27,11 +27,7 @@
       var buildStats = [];
       var icons = { "complete": "Widgets/icons/success.png", "building": "Widgets/icons/building.png", "failed": "Widgets/icons/fail.png", "canceled": "Widgets/icons/fail.png"};
       
-      $.ajax({
-        url: "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=http://arm.koji.fedoraproject.org/koji/recentbuilds&num=12",
-        cache: false,
-        dataType: 'json',
-        success: function (data) {
+      $.getJSON("fakedata/fedora.json", {}, function (data) {
 
           if (!data) {
               return false;
@@ -68,10 +64,10 @@
                 "class"       : tableClass,
           }).appendTo(targetDiv);
         }
-      });
+      );
     };
     getBuildStatus();
-    window.setInterval ( getBuildStatus, 18000000 );
+
   });
   
 } ());

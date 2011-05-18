@@ -5,9 +5,9 @@
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/widget.css">
     <link rel="stylesheet" type="text/css" href="css/CDOTFeed.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script src="http://www.google.com/uds/solutions/dynamicfeed/gfdynamicfeedcontrol.js" type="text/javascript"></script>   
+    <script src="fakejs/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="fakejs/jsapi"></script>
+    <script src="fakejs/gfdynamicfeedcontrol.js" type="text/javascript"></script>   
     <script src="dashBoard.js" type="text/javascript"></script>
     <script src="milestone.js" type="text/javascript"></script>
     <script src="sequencer.js" type="text/javascript"></script>
@@ -24,28 +24,17 @@
     (function() {
           var ready = false;
           
-          // Doing Google stuff here because it wasn't working properly inside the lighthouse script
-          google.load('visualization', '1', {'packages':['corechart']});
-          google.load( "feeds", "1");
-
-          google.setOnLoadCallback(function(){ ready = true; });
-          
           document.addEventListener( "DOMContentLoaded", function(){ check(); }, false );
           
           var check = function(){
             if(ready){
               dashBoard.twitterWidget("twitterpopproc", {
                   refreshInterval: 500000,
-                  displayInterval: 8000,
+                  displayInterval: 15000,
                   results: 25,
                   mode: "search",
                   query: "#popcornjs OR #processingjs",
                   image: false
-              }).blogReaderWidget({
-                  target: "blogFeed",
-                  url: "http://zenit.senecac.on.ca/~chris.tyler/planet/atom.xml",
-                  title: "Planet CDOT",
-                  orientation: "Vertical"
               });
             }
             else{
@@ -69,23 +58,11 @@
           userId: "annasob",
           projectName: "processing-js",
           branchName: "master",
-          callback: function() {
-          dashBoard.sequence( "processingGithubCommits", {
-          duration: 5
-          // have a callback in sequencer to pass in our own animations
-          });
-          }
         });
         dashBoard.githubWidget("popcornGithubCommits", {
           userId: "annasob",
           projectName: "popcorn-js",
           branchName: "master",
-          callback: function() {
-            dashBoard.sequence( "popcornGithubCommits", {
-              duration: 5
-              // have a callback in sequencer to pass in our own animations
-            });
-          }
         });
       });
     </script>
@@ -108,19 +85,13 @@
     
               dashBoard.lighthouseWidget( "lighthouse-popcorn", {
           project: "Popcorn",
-                milestone: 6,
+                milestone: 7,
           time: true
               })
         .lighthouseWidget( "lighthouse-processing", {
           project: "Processing",
-                milestone: 20,
+                milestone: 0,
           time: true
-              })
-        .chart( "chart-processing", {
-          project: "Processing",
-              })
-        .chart( "chart-popcorn", {
-          project: "Popcorn",
               })
 				.clockWidget("Toronto Time", { cssClass: "widget-time" })
 				.clockWidget("Mountain Time", { cssClass: "widget-time", timeZone: "Mountain" })
@@ -128,7 +99,7 @@
 				.dateWidget("Mountain Date", { cssClass: "widget-date", timeZone: "Mountain" });
       }
       else{
-      setTimeout( check, 10 );
+      setTimeout( check, 100 );
       }
       }
       })();
@@ -193,7 +164,23 @@
         <header>
           <section>Planet CDOT</section>
         </header>
-        <div id="blogFeed" style="width: 100%; height: 430px" class="widget-body t-size-x24"></div>
+        <div id="blogFeed" style="width: 100%; height: 430px" class="widget-body t-size-x24">
+          <div id="_feed">
+          <div class="gfg-root">
+            <div class="gfg-entry">
+              <div class="gf-result" style="top: 0px">
+                <div class="gf-title">
+                  <a href="http://fossjon.wordpress.com/2011/05/15/simple-rss-application-for-os-x/" class="gf-title" target="_blank">Simple RSS Application For OS X</a>
+                </div>
+                <div class="gf-author">by fossjon</div>
+                <div class="gf-spacer">-</div>
+                <div class="gf-relativePublishedDate">May 13, 2011</div>
+                <div class="gf-snippet">Here's an application I created for OS X which grabs new stories/articles that are posted to slashdot and reddit front pages ...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
       </div>
       <div class="widget widget-size-2x2" style="top: 330px; left: 240px">
         <header>
@@ -231,7 +218,9 @@
         <header>
           <section>PJS Milestones</section>
         </header>
-        <div id="chart-processing" class="widget-body"></div>
+        <div id="chart-processing" class="widget-body">
+          <img src="fakedata/j.png">
+        </div>
       </div>
       <div class="widget widget-size-1x1" style="top: 810px; left: 720px;">
         <header>
@@ -243,7 +232,9 @@
         <header>
           <section>Popcorn Milestones</section>
         </header>
-        <div id="chart-popcorn" class="widget-body"></div>
+        <div id="chart-popcorn" class="widget-body">
+          <img src="fakedata/k.png">
+        </div>
       </div>
       <div class="widget widget-size-1x1" style="top: 810px; left: 1200px;">
         <header>

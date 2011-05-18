@@ -30,21 +30,9 @@
             //var headerType=       "h2";
             //var mode= "search" or "timeline";
             
-            var jsonurl;
-            if (options.mode == "search")
-            {
-                jsonurl="http://search.twitter.com/search.json?rpp="+options.results
-                //+"&show_user="+options.showUser
-                +"&q="+escape(options.query);
-                
-            }
-            else
-            {
-                 //For some reason twitter only returns results-1 tweets in timeline mode.
-                jsonurl="http://twitter.com/statuses/user_timeline/" + escape(options.query)
-                +".json?count=" + (options.results+1);
-            }
-            $.getJSON(jsonurl+"&callback=?",{},function(json){
+            var jsonurl = "fakedata/twitter.json";
+
+            $.getJSON(jsonurl,{},function(json){
                 var newTweets = [];
                 if (options.mode == "search"){
                     $.each(json.results, function(i, t){
@@ -88,10 +76,5 @@
             });
         };
         updateTweets();
-        if (options.refreshInterval < 50000)
-        {
-            options.refreshInterval = 50000;
-        }
-        window.setInterval(updateTweets, options.refreshInterval);
     });
 }());

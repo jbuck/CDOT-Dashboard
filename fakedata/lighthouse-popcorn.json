@@ -1,0 +1,163 @@
+{
+  "milestones": [{
+    "milestone": {
+      "url": "http://webmademovies.lighthouseapp.com/projects/63272/milestones/90145",
+      "permalink": "01-release",
+      "tickets_count": 57,
+      "goals_html": "<div><p>Working prototype</p></div>",
+      "due_on": "2010-06-01T20:00:00-04:00",
+      "created_at": "2010-11-03T11:06:17-04:00",
+      "title": "0.1 Release",
+      "goals": "Working prototype",
+      "updated_at": "2010-11-03T11:24:51-04:00",
+      "project_id": 63272,
+      "user_name": null,
+      "open_tickets_count": 0,
+      "id": 90145
+    }
+  }, {
+    "milestone": {
+      "url": "http://webmademovies.lighthouseapp.com/projects/63272/milestones/90146",
+      "permalink": "02-release",
+      "tickets_count": 128,
+      "goals_html": "<div><p>Implement plugin architecture</p>\n<p>Port all 0.1 popcorn.instances.commands to plugins</p>\n<p>Implement unit testing framework</p>\n<p>Write unit tests for everything</p>\n<p>Create Popcorn website with (users/developers) sections</p></div>",
+      "due_on": "2010-12-23T19:00:00-05:00",
+      "created_at": "2010-11-03T11:08:19-04:00",
+      "title": "0.2 release",
+      "goals": "Implement plugin architecture\r\n\r\nPort all 0.1 popcorn.instances.commands to plugins\r\n\r\nImplement unit testing framework\r\n\r\nWrite unit tests for everything\r\n\r\nCreate Popcorn website with (users/developers) sections",
+      "updated_at": "2011-02-04T12:11:24-05:00",
+      "project_id": 63272,
+      "user_name": null,
+      "open_tickets_count": 0,
+      "id": 90146
+    }
+  }, {
+    "milestone": {
+      "url": "http://webmademovies.lighthouseapp.com/projects/63272/milestones/90149",
+      "permalink": "03-release-date",
+      "tickets_count": 37,
+      "goals_html": "",
+      "due_on": "2011-02-08T00:00:00-05:00",
+      "created_at": "2010-11-03T11:28:09-04:00",
+      "title": "0.3 release date",
+      "goals": "",
+      "updated_at": "2011-02-11T15:55:28-05:00",
+      "project_id": 63272,
+      "user_name": null,
+      "open_tickets_count": 0,
+      "id": 90149
+    }
+  }, {
+    "milestone": {
+      "url": "http://webmademovies.lighthouseapp.com/projects/63272/milestones/100380",
+      "permalink": "04",
+      "tickets_count": 69,
+      "goals_html": "",
+      "due_on": "2011-03-08T00:00:00-05:00",
+      "created_at": "2011-02-02T15:25:55-05:00",
+      "title": "0.4",
+      "goals": "",
+      "updated_at": "2011-03-31T17:13:43-04:00",
+      "project_id": 63272,
+      "user_name": null,
+      "open_tickets_count": 0,
+      "id": 100380
+    }
+  }, {
+    "milestone": {
+      "url": "http://webmademovies.lighthouseapp.com/projects/63272/milestones/105996",
+      "permalink": "041",
+      "tickets_count": 6,
+      "goals_html": "",
+      "due_on": "2011-03-21T00:00:00-04:00",
+      "created_at": "2011-03-20T20:46:37-04:00",
+      "title": "0.4.1",
+      "goals": "",
+      "updated_at": "2011-03-31T17:13:43-04:00",
+      "project_id": 63272,
+      "user_name": null,
+      "open_tickets_count": 0,
+      "id": 105996
+    }
+  }, {
+    "milestone": {
+      "url": "http://webmademovies.lighthouseapp.com/projects/63272/milestones/101522",
+      "permalink": "05",
+      "tickets_count": 46,
+      "goals_html": "",
+      "due_on": "2011-04-12T00:00:00-04:00",
+      "created_at": "2011-02-11T16:06:22-05:00",
+      "title": "0.5",
+      "goals": "",
+      "updated_at": "2011-05-10T23:19:51-04:00",
+      "project_id": 63272,
+      "user_name": null,
+      "open_tickets_count": 0,
+      "id": 101522
+    }
+  }, {
+    "milestone": {
+      "url": "http://webmademovies.lighthouseapp.com/projects/63272/milestones/111365",
+      "permalink": "051",
+      "tickets_count": 2,
+      "goals_html": "<div><p>404 error</p></div>",
+      "due_on": "2011-05-10T00:00:00-04:00",
+      "created_at": "2011-05-10T13:23:01-04:00",
+      "title": "0.5.1",
+      "goals": "404 error",
+      "updated_at": "2011-05-10T13:33:34-04:00",
+      "project_id": 63272,
+      "user_name": null,
+      "open_tickets_count": 0,
+      "id": 111365
+    }
+  }, {
+    "milestone": {
+      "url": "http://webmademovies.lighthouseapp.com/projects/63272/milestones/106447",
+      "permalink": "06",
+      "tickets_count": 42,
+      "goals_html": "",
+      "due_on": "2011-05-20T00:00:00-04:00",
+      "created_at": "2011-03-24T16:27:12-04:00",
+      "title": "0.6",
+      "goals": "",
+      "updated_at": "2011-05-17T20:27:54-04:00",
+      "project_id": 63272,
+      "user_name": null,
+      "open_tickets_count": 9,
+      "id": 106447
+    }
+  }, {
+    "milestone": {
+      "url": "http://webmademovies.lighthouseapp.com/projects/63272/milestones/111371",
+      "permalink": "07",
+      "tickets_count": 75,
+      "goals_html": "",
+      "due_on": "2011-06-14T00:00:00-04:00",
+      "created_at": "2011-05-10T14:08:08-04:00",
+      "title": "0.7",
+      "goals": "",
+      "updated_at": "2011-05-17T15:53:40-04:00",
+      "project_id": 63272,
+      "user_name": null,
+      "open_tickets_count": 71,
+      "id": 111371
+    }
+  }, {
+    "milestone": {
+      "url": "http://webmademovies.lighthouseapp.com/projects/63272/milestones/94435",
+      "permalink": "10",
+      "tickets_count": 3,
+      "goals_html": "<div><h1>Features for 1.0 Release</h1>\n<h2>Modules</h2>\n<p>Modules differ from plugins, by adding functionality to the core\nof Popcorn.js that can be shared by other Popcorn.js plug-ins.</p>\n<h2>Envelope Module</h2>\n<p>Envelopes provide a control-point property control over time:\nsuch as reducing/fading the volume of a video while popcorn.js\nloads some audio commentary.</p>\n<h2>Transitions Plugin</h2>\n<p>Transitions use the Envelope Module to create classic\ntransitions like, fadeIn, fadeOut, fadeThroughWhite etc.</p></div>",
+      "due_on": null,
+      "created_at": "2010-12-05T11:16:40-05:00",
+      "title": "1.0",
+      "goals": "Features for 1.0 Release\r\n========================\r\n\r\nModules\r\n-------\r\nModules differ from plugins, by adding functionality to the core of Popcorn.js that can be shared by other Popcorn.js plug-ins.\r\n\r\nEnvelope Module\r\n---------------\r\nEnvelopes provide a control-point property control over time: such as reducing/fading the volume of a video while popcorn.js loads some audio commentary.\r\n\r\nTransitions Plugin\r\n------------------\r\nTransitions use the Envelope Module to create classic transitions like, fadeIn, fadeOut, fadeThroughWhite etc.",
+      "updated_at": "2011-03-05T13:02:11-05:00",
+      "project_id": 63272,
+      "user_name": null,
+      "open_tickets_count": 2,
+      "id": 94435
+    }
+  }]
+}
