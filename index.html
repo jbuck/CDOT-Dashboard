@@ -24,6 +24,13 @@
     (function() {
           var ready = false;
           
+          // Doing Google stuff here because it wasn't working properly inside the lighthouse script
+          google.load('visualization', '1', {'packages':['corechart']});
+          google.load( "feeds", "1");
+
+          google.setOnLoadCallback(function(){ ready = true; });
+
+          
           document.addEventListener( "DOMContentLoaded", function(){ check(); }, false );
           
           var check = function(){
