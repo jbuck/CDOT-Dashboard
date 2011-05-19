@@ -71,7 +71,7 @@
       });
     };
     getBuildStatus();
-    window.setInterval ( getBuildStatus, 18000000 );
+    window.setInterval ( getBuildStatus, 1800000 );
   });
   
 } ());
