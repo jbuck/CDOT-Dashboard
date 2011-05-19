@@ -74,6 +74,7 @@
                 options.headerType && $(targetDiv).append("<"+ options.headerType +">" + modeString + options.query + "</"+options.headerType+">");
                 
                 var displayTweet = function() {
+                  $("#"+id).fadeIn(3000,function(){$("#"+id).fadeOut(7000, function(){});});
                   var userImage = "<img src='" + newTweets[ tweetIndex ].img +"'/>";
                   var userLink;
                   var userDate;
@@ -99,10 +100,10 @@
                   if ( !newTweets[ ++tweetIndex ] ) {
                     tweetIndex = 0;
                   }
-
+                                  
                 };
                 displayTweet();
-                
+
                 innerIntervalID = setInterval( displayTweet, options.displayInterval );
             });
         };
