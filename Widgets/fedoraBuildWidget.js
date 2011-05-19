@@ -55,7 +55,7 @@
             dateString = dateString + (date.getHours() < 10 ? "0" + date.getHours() : date.getHours()) + ":";
             dateString = dateString + (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes());
             var s = '<tr><td>' + 
-              dateString + '</td><td style="text-align: left;">' + build +
+              dateString + '</td><td style="text-align: left;"><a href="' + entry.link + '">' + build + '</a>' +
               '</td><td ><img height="16px" width="16px" src="' + 
               icons[outcome] + '"></img></td></tr>';
             buildStats.push(s);
